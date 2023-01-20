@@ -19,12 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-//HRD
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index']);
+Route::middleware('auth', 'isAdmin')->group(function () {
     //jabatan
+    Route::get('/home', [HomeController::class, 'index']);
     Route::get('/tablejabatan', [JabatanController::class, 'index']);
     Route::get('/tablejabatan/create', [JabatanController::class, 'create_jabatan']);
     Route::post('/tablejabatan/create/store', [JabatanController::class, 'store']);
@@ -38,4 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tablekaryawan/{id}/edit', [KaryawanController::class, 'edit']);
     Route::put('/tablekaryawan/{id}', [KaryawanController::class, 'update']);
     Route::delete('/tablekaryawan/{id}', [KaryawanController::class, 'delete']);
+});
+
+//HRD
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware(['auth'])->group(function () {
 });
