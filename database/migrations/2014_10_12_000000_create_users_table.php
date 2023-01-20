@@ -17,6 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('id_google')->nullable();
             $table->string('name');
+            $table->integer('nik')->default('0');
+            $table->string('alamat')->default('null');
+            $table->string('jabatan')->default('null');
+            $table->integer('notelepon')->default('0');
+            $table->integer('gaji')->default('0');
+            $table->string('photo', 300)->default('null');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -310,6 +310,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/tablekaryawan">
+                                <i class="bi bi-circle"></i><span>Table Karyawan</span>
+                            </a>
+                        </li>
+                        <li>
                             <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
                                 <i class="bi bi-clipboard2-data-fill"></i><span>Absensi Karyawan</span><i class="bi bi-chevron-down ms-auto"></i>
                             </a>
