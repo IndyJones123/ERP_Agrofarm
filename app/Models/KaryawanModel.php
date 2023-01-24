@@ -7,17 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class KaryawanModel extends Model
 {
-    public $table = "users";
+    public $table = "karyawan";
     use HasFactory;
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nama',
         'nik',
         'alamat',
         'jabatan',
         'notelepon',
-        'gaji',
         'photo',
+        'email',
+        'password',
     ];
 }

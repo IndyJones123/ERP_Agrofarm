@@ -87,7 +87,7 @@
                     @foreach($data as $Karyawan)
                     <tr>
                         <th scope="row">{{$Karyawan->nik}}</th>
-                        <td>{{$Karyawan->name}}</td>
+                        <td>{{$Karyawan->nama}}</td>
                         <td>{{$Karyawan->email}}</td>
                         <td>{{$Karyawan->jabatan}}</td>
                         <td>{{$Karyawan->alamat}}</td>
