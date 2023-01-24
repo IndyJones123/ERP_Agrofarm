@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HRD\JabatanController;
 use App\Http\Controllers\HRD\KaryawanController;
+use App\Http\Controllers\HRD\AbsensiController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,13 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tablekaryawan/{id}/edit', [KaryawanController::class, 'edit']);
     Route::put('/tablekaryawan/{id}', [KaryawanController::class, 'update']);
     Route::delete('/tablekaryawan/{id}', [KaryawanController::class, 'delete']);
+    //Absensi
+    Route::get('/tableAbsensi', [AbsensiController::class, 'index']);
+    Route::get('/tableAbsensi/create', [AbsensiController::class, 'create_Absensi']);
+    Route::post('/tableAbsensi/create/store', [AbsensiController::class, 'store']);
+    Route::get('/tableAbsensi/{id}/edit', [AbsensiController::class, 'edit']);
+    Route::put('/tableAbsensi/{id}', [AbsensiController::class, 'update']);
+    Route::delete('/tableAbsensi/{id}', [AbsensiController::class, 'delete']);
 });
 
 //HRD
