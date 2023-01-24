@@ -4,6 +4,7 @@ use App\Http\Controllers\HRD\JabatanController;
 use App\Http\Controllers\HRD\KaryawanController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingpageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::middleware(['auth'])->group(function () {
 });
+
+Route::get('/landingpage', [LandingpageController::class, 'index']);
