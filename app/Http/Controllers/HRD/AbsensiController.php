@@ -19,7 +19,9 @@ class AbsensiController extends Controller
         if ($request->has('search1')) {
             $data = AbsensiModel::where('tittle', 'LIKE', '%' . $request->search1 . '%')->get();
         } else if ($request->has('search2')) {
-            $data = AbsensiModel::where('jabatan', 'LIKE', '%' . $request->search2 . '%')->get();
+            $data = AbsensiModel::where('deskripsi', 'LIKE', '%' . $request->search2 . '%')->get();
+        } else if ($request->has('search2')) {
+            $data = AbsensiModel::where('deskripsi', 'LIKE', '%' . $request->search2 . '%')->get();
         } else {
             $data = AbsensiModel::all();
         }
@@ -83,7 +85,6 @@ class AbsensiController extends Controller
         $batas_start_time = $request->input('batas_start_time');
         $end_time = $request->input('end_time');
         $batas_end_time = $request->input('batas_end_time');
-        $notelepon = $request->input('notelepon');
 
 
         $data = AbsensiModel::find($id);
@@ -97,21 +98,6 @@ class AbsensiController extends Controller
                 'batas_start_time' => $batas_start_time,
                 'end_time' => $end_time,
                 'batas_end_time' => $batas_end_time,
-                'notelepon' => $notelepon,
-            ]);
-
-        $data2 = User::find($tittle);
-
-        $data2 = User::where('tittle', $tittle)
-            ->update([
-                'tittle' => $tittle,
-                'name' => $deskripsi,
-                'start_time' => $start_time,
-                'jabatan' => $jabatan,
-                'batas_start_time' => $batas_start_time,
-                'end_time' => $end_time,
-                'batas_end_time' => $batas_end_time,
-                'notelepon' => $notelepon,
             ]);
 
         $data = AbsensiModel::all();

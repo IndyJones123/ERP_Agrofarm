@@ -4,6 +4,7 @@ use App\Http\Controllers\HRD\JabatanController;
 use App\Http\Controllers\HRD\KaryawanController;
 use App\Http\Controllers\HRD\AbsensiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HRD\LiburController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,13 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tableAbsensi/{id}/edit', [AbsensiController::class, 'edit']);
     Route::put('/tableAbsensi/{id}', [AbsensiController::class, 'update']);
     Route::delete('/tableAbsensi/{id}', [AbsensiController::class, 'delete']);
+    //Libur
+    Route::get('/tableLiburan', [LiburController::class, 'index']);
+    Route::get('/tableLiburan/create', [LiburController::class, 'create_Liburan']);
+    Route::post('/tableLiburan/create/store', [LiburController::class, 'store']);
+    Route::get('/tableLiburan/{id}/edit', [LiburController::class, 'edit']);
+    Route::put('/tableLiburan/{id}', [LiburController::class, 'update']);
+    Route::delete('/tableLiburan/{id}', [LiburController::class, 'delete']);
 });
 
 //HRD
