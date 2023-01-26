@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('nik')->default('0');
             $table->string('alamat')->default('null');
             $table->string('jabatan')->default('null');
-            $table->integer('notelepon')->default('0');
+            $table->string('notelepon')->default('0');
             $table->string('photo', 300)->default('null');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

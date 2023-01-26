@@ -4,6 +4,7 @@ namespace App\Http\Controllers\HRD;
 
 use App\Http\Controllers\Controller;
 use App\Models\KaryawanModel;
+use App\Models\KehadiranModel;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -40,6 +41,7 @@ class KaryawanController extends Controller
         $photo = $request->input('photo');
         $role = $request->input('role');
         $notelepon = $request->input('notelepon');
+        $date = date('Y-m-d');
 
 
 
@@ -67,6 +69,23 @@ class KaryawanController extends Controller
                 'role' => $role,
                 'notelepon' => $notelepon,
                 'password' => Hash::make('123'),
+            ]);
+        $data = DB::table('kehadiran')
+            ->insert([
+                'nik' => $nik,
+                'namapegawai' => $nama,
+                'bulan' => $date,
+                'jabatan' => $jabatan,
+                'sakit' => 0,
+                'izin' => 0,
+                'alpha' => 0,
+                'cuti' => 0,
+                'dinasluar' => 0,
+                'terlambat' => 0,
+                'hadir' => 0,
+                'wajibhadir' => 20,
+                'sisacuti' => 5,
+                'keterangan' => 'null',
             ]);
 
         $data = KaryawanModel::all();
@@ -127,6 +146,15 @@ class KaryawanController extends Controller
                 'photo' => $photo,
                 'role' => $role,
                 'notelepon' => $notelepon,
+            ]);
+
+        $data3 = KehadiranModel::find($nik);
+
+        $data3 = KehadiranModel::where('nik', $nik)
+            ->update([
+                'nik' => $nik,
+                'namapegawai' => $nama,
+                'jabatan' => $jabatan,
             ]);
 
         $data = KaryawanModel::all();

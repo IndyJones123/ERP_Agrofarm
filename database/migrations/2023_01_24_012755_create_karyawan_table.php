@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('nik')->default('0');
+            $table->integer('nik')->default('123456');
             $table->string('alamat')->default('null');
             $table->string('jabatan')->default('null');
-            $table->integer('notelepon')->default('0');
+            $table->string('notelepon')->default('0');
             $table->string('photo', 300)->default('null');
             $table->string('email')->unique();
             $table->string('password');
