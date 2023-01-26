@@ -46,3 +46,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/landingpage', [LandingpageController::class, 'index']);
+
+Route::get('/landingpage/detail1', [LandingpageController::class, 'detail1']);

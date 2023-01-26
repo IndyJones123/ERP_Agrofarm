@@ -12,4 +12,9 @@ class LandingpageController extends Controller
     {
         return view('landingpage');
     }
+
+    public function detail1()
+    {
+        return view('detailproduk/detailproducts');
+    }
 }

@@ -64,8 +64,8 @@
                     <li class="dropdown"><a href="#counts"><span>Branch Company</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>                
                             <li><a href="/PTAgriPrimeInternational">PT Agri Prime International</a></li>
-                            <li><a href="/PTAgrochem">PT Agrochem</a></li>
-                            <li><a href="/PTSAP">PT SAP</a></li>
+                            <li><a href="/PTAgrochem">PT Agrochem Mega Globalindo</a></li>
+                            <li><a href="/PTSAP">PT Sarana Agro Panata</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -77,18 +77,26 @@
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-
+    
     <section id="hero" class="d-flex align-items-center">
+        <video id="videoPlayer" class="d-flex align-items-center" autoplay loop muted poster="https://i.vimeocdn.com/video/1595118788-f072152dae9edcbbb90d9970e470670443c536a58d295dbca1395550bac80d3c-d?mw=700&mh=394">
+            <source src="assets2/css/videoprofile.mp4" type="video/mp4">
+            
+        
+    </video>
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Welcome to <a href="/" class="logo">PT. Agrofarm Nusa Raya</a></h1>
-            <h2><h1 class="logo"><a href="index.html"><img src="assets2/img/AGROFARM EKSTERNAL.png"></a></h1>
+            <h1>Welcome to <style></style> <a href="/" class="logo">PT. Agrofarm Nusa Raya</a></h1>
+            <h2><h1 class="logo"><a href="index.html"><img src="assets2/img/AGROFARM EKSTERNAL.png" height="70%" width="70%"></a></h1>
             </h2>
             <div class="d-flex">
                 <a href="#about" class="btn-get-started scrollto">Get Started</a>
                 <a href="https://www.youtube.com/watch?v=2gtNkWM8Srk" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
         </div>
-    </section><!-- End Hero -->
+    </section>
+    
+    
+        
 
     <main id="main">
 
@@ -103,7 +111,7 @@
                     <h3>Find Out More <span>About Us</span></h3>
                     <p>
 
-                        Our Company Was Officially Established In 2005 As PT Agrofarm Nusa Raya.</p>
+                        </p>
                 </div>
 
                 <div class="row">
@@ -113,7 +121,7 @@
                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
                         <h3>PT Agrofarm Nusa Raya.</h3>
                         <p class="fst-italic">
-                            Perusahaan kami berdiri secara resmi pada tahun 2005 dengan nama PT Agrofarm Nusa Raya, Kami adalah produsen pupuk mikro (micro Nutrients Fertilizer) dengan brand LAKABA. Diketahui secara umum bahwa tanaman sawit dan tanaman lainnya yang defisiensi Zn, Cu, B203,Fe, dan unsur mikro lainya akan terganggu produktivitasnya. LAKABA hadir memberi solusi kecukupan hara mikro pada tanaman. Dengan tujuan agar produktivitas tanaman meningkat dan tidak terganggu.
+                            Perusahaan kami berdiri secara resmi pada tahun 2005 dengan nama PT Agrofarm Nusa Raya, Kami adalah produsen pupuk Mikro, NPK, Hayati & Organik.
                         </p>
                         <ul>
                             <li>
@@ -126,7 +134,7 @@
                             <li>
                                 <i class="bx bx-images"></i>
                                 <div>
-                                    <h5>Company Mission</h5>
+                                    <h5>Misi Perusahaan</h5>
                                     <p>1. Memperbaiki kualitas hidup petani</p>
                                     <p>2. Menghadirkan kebaikan untuk keluarga, masyarakat dan lingkungan</p>
                                 </div>
@@ -148,7 +156,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="bi-briefcase-fill"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Clients</p>
                         </div>
                     </div>
@@ -156,7 +164,7 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                         <div class="count-box">
                             <i class="bi bi-journal-richtext"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Products</p>
                         </div>
                     </div>
@@ -584,24 +592,14 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#home">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#product">Product</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#clients">Branch Company</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact Us</a></li>
                         </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                        </ul>
-                    </div>
+                    </div>                
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Social Networks</h4>
