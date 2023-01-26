@@ -7,6 +7,7 @@ use App\Http\Controllers\HRD\KehadiranController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HRD\LiburController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingpageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::middleware(['auth'])->group(function () {
 });
+
+Route::get('/landingpage', [LandingpageController::class, 'index']);
+
+Route::get('/landingpage/detail1', [LandingpageController::class, 'detail1']);
