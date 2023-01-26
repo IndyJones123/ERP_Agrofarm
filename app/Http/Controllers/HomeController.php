@@ -23,10 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin/HRD/home');
+        return view('hakakses');
     }
     public function login()
     {
         return view('auth/login');
+    }
+    public function hakakses()
+    {
+        return view('admin/HRD/home');
+    }
+    public function guest()
+    {
+        return view('landingpages');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\HRD\AbsensiController;
 use App\Http\Controllers\HRD\KehadiranController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HRD\LiburController;
+use App\Http\Controllers\Karyawan\HomeKaryawanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingpageController;
 
@@ -25,7 +26,7 @@ Auth::routes(['verify' => true]);
 
 Route::middleware('auth', 'isAdmin')->group(function () {
     //jabatan
-    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'hakakses']);
     Route::get('/tablejabatan', [JabatanController::class, 'index']);
     Route::get('/tablejabatan/create', [JabatanController::class, 'create_jabatan']);
     Route::post('/tablejabatan/create/store', [JabatanController::class, 'store']);
@@ -64,12 +65,15 @@ Route::middleware('auth', 'isAdmin')->group(function () {
 });
 
 //HRD
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/erp', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth', 'isKaryawan')->group(function () {
+    Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
 });
 
-Route::get('/landingpage', [LandingpageController::class, 'index']);
+Route::get('/', [LandingpageController::class, 'index']);
 
 Route::get('/landingpage/detail1', [LandingpageController::class, 'detail1']);
+
+Route::get('/guest', [HomeController::class, 'guest']);

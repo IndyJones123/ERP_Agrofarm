@@ -69,7 +69,7 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="/erp">Login</a></li>
+                    <li><a class="nav-link scrollto" href="/erp"> {{ Auth::user()->name }}</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
