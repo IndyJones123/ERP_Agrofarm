@@ -22,7 +22,7 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Form Edit Kehadiran</h5>
+                <h5 class="card-title">Form Edit LogKehadiran</h5>
 
                 <!-- Vertical Form -->
                 <form class="row g-3" action="/tableKehadiran/{{$id}}" method="post">
@@ -82,8 +82,8 @@
                         <input type="number" name="sisacuti" value="{{$sisacuti}}" class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Keterangan</label>
-                        <input type="text" name="keterangan" value="{{$keterangan}}" class="form-control" id="inputEmail4">
+                        <label for="inputEmail4" class="form-label">status</label>
+                        <input type="text" name="status" value="{{$status}}" class="form-control" id="inputEmail4">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>

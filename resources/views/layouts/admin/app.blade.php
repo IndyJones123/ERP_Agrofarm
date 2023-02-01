@@ -334,6 +334,11 @@
                                         <i class="bi bi-arrow-right-short"></i><span> ---------Data Kehadiran</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="/tableLogKehadiran">
+                                        <i class="bi bi-arrow-right-short"></i><span> ---------Log Kehadiran</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>

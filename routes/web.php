@@ -3,6 +3,7 @@
 use App\Http\Controllers\HRD\JabatanController;
 use App\Http\Controllers\HRD\KaryawanController;
 use App\Http\Controllers\HRD\AbsensiController;
+use App\Http\Controllers\HRD\KehadiranLogController;
 use App\Http\Controllers\HRD\KehadiranController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HRD\LiburController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\LandingpageController;
 
 Auth::routes(['verify' => true]);
 
+//midleware admin
 Route::middleware('auth', 'isAdmin')->group(function () {
     //jabatan
     Route::get('/home', [HomeController::class, 'hakakses']);
@@ -62,14 +64,23 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tableKehadiran/{id}/edit', [KehadiranController::class, 'edit']);
     Route::put('/tableKehadiran/{id}', [KehadiranController::class, 'update']);
     Route::delete('/tableKehadiran/{id}', [KehadiranController::class, 'delete']);
+
+    //LogKehadiran
+    Route::get('/tableLogKehadiran', [KehadiranLogController::class, 'index']);
+    Route::get('/tableLogKehadiran/create', [KehadiranLogController::class, 'create_Kehadiran']);
+    Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
+    Route::get('/tableLogKehadiran/{id}/edit', [KehadiranLogController::class, 'edit']);
+    Route::put('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'update']);
+    Route::delete('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'delete']);
 });
 
 //HRD
 Route::get('/erp', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+//midleware Karyawan
 Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
+    Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);
