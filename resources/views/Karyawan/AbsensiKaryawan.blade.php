@@ -51,28 +51,25 @@
                                     <h6>
                                         <td>{{$Absensi->start_time}}</td>
                                     </h6>
-                                    @if($Absensi->start_time>'07:19:00')
+                                    @if($Absensi->start_time>$waktu)
                                     <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
-                                    @elseif($Absensi->start_time<'07:19:00' && '07:19:00' <$Absensi->end_time)
+                                    @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
                                         <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-info">Absen</button></a>
-
-                                        @endif
-                                        @foreach($data3 as $logkehadiran)
-
-                                        @if($Absensi->start_time<'07:19:00' && $logkehadiran->status == 'sudahabsen')
-                                            <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
-
-                                            @elseif($Absensi->start_time<'07:19:00' && $logkehadiran->status == 'belumabsen' && '23:19:00'>$Absensi->end_time)
+                                        @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"sudahabsen"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
+                                            @elseif($Absensi->start_time<$waktu && 'waktu'>$Absensi->batas_start_time)
                                                 <input type="file" name="bulan" class="form-control" id="inputEmail4" readonly>
                                                 <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-danger">Anda Terlambat</button></a>
+
+
                                                 @endif
-                                                @endforeach
+
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div><!-- End Sales Card -->
+
                 <!-- Sales Card -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card sales-card">

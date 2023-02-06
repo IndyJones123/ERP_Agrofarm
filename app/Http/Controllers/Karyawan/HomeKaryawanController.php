@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AbsensiModel;
 use App\Models\KehadiranLogModel;
+use Carbon\Carbon;
 
 
 class HomeKaryawanController extends Controller
@@ -16,12 +17,15 @@ class HomeKaryawanController extends Controller
     }
     public function absen()
     {
-        $tanggal = '2023-02-01';
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
         $usernama = Auth::user()->name;
         $userjabatan = Auth::user()->jabatan;
         $data = AbsensiModel::where('jabatan', $userjabatan)->get();
         $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
-        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get();
-        return view('Karyawan.AbsensiKaryawan', compact(["data"], ["data2"], ["data3"]));
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
+
+        return view('Karyawan.AbsensiKaryawan')->with(compact(["data"], ["data2"], ["data3"], ['waktu']));
     }
 }
