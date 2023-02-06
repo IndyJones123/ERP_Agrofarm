@@ -5,10 +5,13 @@ namespace App\Http\Controllers\HRD;
 use App\Http\Controllers\Controller;
 use App\Models\KehadiranLogModel;
 use App\Models\JabatanModel;
+use App\Models\AbsensiModel;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -28,6 +31,28 @@ class KehadiranLogController extends Controller
             $data = KehadiranLogModel::all();
         }
         return View('admin/HRD/kehadiran/logkehadiran', compact(["data"]));
+    }
+
+    public function store(Request $request)
+    {
+        $namakaryawan = $request->input('namakaryawan');
+        $jabatan = $request->input('jabatan');
+        $tanggal = $request->input('tanggal');
+        $absenmasuk = $request->input('absenmasuk');
+        $absenkeluar = $request->input('absenkeluar');
+        $status = $request->input('status');
+
+        $data = DB::table('logkehadiran')
+            ->insert([
+                'namakaryawan' => $namakaryawan,
+                'jabatan' => $jabatan,
+                'tanggal' => $tanggal,
+                'absenmasuk' => $absenmasuk,
+                'absenkeluar' => $absenkeluar,
+                'status' => $status,
+            ]);
+
+        return back();
     }
 
     public function edit($id)

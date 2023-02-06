@@ -68,7 +68,7 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     //LogKehadiran
     Route::get('/tableLogKehadiran', [KehadiranLogController::class, 'index']);
     Route::get('/tableLogKehadiran/create', [KehadiranLogController::class, 'create_Kehadiran']);
-    Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
+
     Route::get('/tableLogKehadiran/{id}/edit', [KehadiranLogController::class, 'edit']);
     Route::put('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'update']);
     Route::delete('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'delete']);
@@ -81,6 +81,7 @@ Route::get('/erp', [App\Http\Controllers\HomeController::class, 'index'])->name(
 Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
     Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
+    Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);

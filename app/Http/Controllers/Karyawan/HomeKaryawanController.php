@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Karyawan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Models\AbsensiModel;
 use App\Models\KehadiranLogModel;
-use Carbon\Carbon;
+
 
 
 class HomeKaryawanController extends Controller
@@ -26,6 +27,6 @@ class HomeKaryawanController extends Controller
         $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
         $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
 
-        return view('Karyawan.AbsensiKaryawan')->with(compact(["data"], ["data2"], ["data3"], ['waktu']));
+        return view('Karyawan.AbsensiKaryawan')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
     }
 }

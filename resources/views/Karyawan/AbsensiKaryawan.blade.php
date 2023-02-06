@@ -53,9 +53,63 @@
                                     </h6>
                                     @if($Absensi->start_time>$waktu)
                                     <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
-                                    @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
-                                        <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-info">Absen</button></a>
-                                        @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"sudahabsen"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
+                                    @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Hadir-1"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
+                                        @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
+                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                {{ csrf_field() }}
+                                                <div class="col-12">
+
+                                                    <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                </div>
+                                                <div class="col-12">
+
+                                                    <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-info">Absen Sekarang {{$waktu}}</button>
+                                                </div>
+                                            </form><!-- Vertical Form -->
+                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                {{ csrf_field() }}
+                                                <div class="col-12">
+
+                                                    <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                </div>
+                                                <div class="col-12">
+
+                                                    <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-Danger">Absen Sekarang {{$waktu}}</button>
+                                                </div>
+                                            </form><!-- Vertical Form -->
+
                                             @elseif($Absensi->start_time<$waktu && 'waktu'>$Absensi->batas_start_time)
                                                 <input type="file" name="bulan" class="form-control" id="inputEmail4" readonly>
                                                 <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-danger">Anda Terlambat</button></a>
@@ -186,37 +240,47 @@
                 </div>
 
                 <div class="card-body pb-0">
-                    <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+                    <h5 class="card-title">Keterangan Status <span>| Absensi</span></h5>
 
                     <div class="news">
                         <div class="post-item clearfix">
-                            <img src="assets/img/news-1.jpg" alt="">
-                            <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                            <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Hadir-1</a></h4>
+                            <p>Karyawan Telah Melakukan Absensi Masuk</p>
                         </div>
 
                         <div class="post-item clearfix">
-                            <img src="assets/img/news-2.jpg" alt="">
-                            <h4><a href="#">Quidem autem et impedit</a></h4>
-                            <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Hadir-2</a></h4>
+                            <p>Karyawan Telah Melakukan Absensi Masuk dan Absensi Keluar</p>
                         </div>
 
                         <div class="post-item clearfix">
-                            <img src="assets/img/news-3.jpg" alt="">
-                            <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                            <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Terlambat</a></h4>
+                            <p>Karyawan Terlambat Untuk Melakukan Absensi Dan Diwajibkan Untuk Mengirimkan Surat Keterlambatan Yang Dapat Didapatkan Di Pengajuan Surat</p>
                         </div>
 
                         <div class="post-item clearfix">
-                            <img src="assets/img/news-4.jpg" alt="">
-                            <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                            <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Cuti</a></h4>
+                            <p>Karyawan Tidak Bekerja Dan Memutuskan Untuk Mengambil Jatah Cuti</p>
                         </div>
 
                         <div class="post-item clearfix">
-                            <img src="assets/img/news-5.jpg" alt="">
-                            <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                            <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Absen</a></h4>
+                            <p>Karyawan Tidak Bekerja Dan Sisa Cuti Habis</p>
+                        </div>
+                        <div class="post-item clearfix">
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Dinas Luar</a></h4>
+                            <p>Karyawan Absen Diluar Wilayah Perusahaan Dan Diwajibkan Menyertakan Surat Keterangan Yang Dapat Didapatkan Di Pengajuan Surat</p>
+                        </div>
+                        <div class="post-item clearfix">
+                            <img src="{{asset('assets/img/favicon.png')}}" width="50" height="50">
+                            <h4><a href="#">Izin</a></h4>
+                            <p>Karyawan Tidak Bekerja Karena Terdapat Kegiatan Mendesak Dan Diwajibkan Melampirkan Surat Izin Yang Dapat Didapatkan Di Pengajuan Surat</p>
                         </div>
 
                     </div><!-- End sidebar recent posts-->
