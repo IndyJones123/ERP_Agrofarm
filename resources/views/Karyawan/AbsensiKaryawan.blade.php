@@ -31,12 +31,14 @@
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
+                                    <h6>Tidak Masuk</h6>
                                 </li>
-
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                @if('22:00:00'>$waktu && $data3!='[{"status":"Terlambat"}]' && $data3!='[{"status":"Terlambats"}]' && $data3!='[{"status":"Hadir-1"}]' && $data3!='[{"status":"Hadir-2"}]')
+                                <li><a class="dropdown-item" href="/izin">Izin</a></li>
+                                <li><a class="dropdown-item" href="/sakit">Sakit</a></li>
+                                <li><a class="dropdown-item" href="/dinasluar">Dinas Luar</a></li>
+                                <li><a class="dropdown-item" href="/cuti">Cuti</a></li>
+                                @endif
                             </ul>
                         </div>
 
@@ -52,70 +54,79 @@
                                         <td>{{$Absensi->start_time}}</td>
                                     </h6>
                                     @if($Absensi->start_time>$waktu)
+
                                     <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
-                                    @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Hadir-1"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
-                                        @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
-                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
-                                                {{ csrf_field() }}
-                                                <div class="col-12">
+                                    @elseif($data3=='[{"status":"Terlambats"}]')<a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
+                                    @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Terlambat"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
+                                        @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Terlambat"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
+                                            @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Hadir-2"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Masuk Hari Ini</button></a>
+                                                @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Hadir-1"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Masuk Hari Ini</button></a>
+                                                    @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
 
-                                                    <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+                                                        <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                            {{ csrf_field() }}
+                                                            <div class="col-12">
 
-                                                </div>
-                                                <div class="col-12">
+                                                                <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
 
-                                                    <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
-                                                </div>
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-info">Absen Sekarang {{$waktu}}</button>
-                                                </div>
-                                            </form><!-- Vertical Form -->
-                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
-                                                {{ csrf_field() }}
-                                                <div class="col-12">
+                                                            </div>
+                                                            <div class="col-12">
 
-                                                    <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
-
-                                                </div>
-                                                <div class="col-12">
-
-                                                    <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
-                                                </div>
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-Danger">Absen Sekarang {{$waktu}}</button>
-                                                </div>
-                                            </form><!-- Vertical Form -->
-
-                                            @elseif($Absensi->start_time<$waktu && 'waktu'>$Absensi->batas_start_time)
-                                                <input type="file" name="bulan" class="form-control" id="inputEmail4" readonly>
-                                                <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-danger">Anda Terlambat</button></a>
+                                                                <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn btn-info">Absen Sekarang {{$waktu}}</button>
+                                                            </div>
+                                                        </form><!-- Vertical Form -->
 
 
-                                                @endif
+                                                        @elseif($Absensi->start_time<$waktu && 'waktu'>$Absensi->batas_start_time)
+
+                                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                                {{ csrf_field() }}
+                                                                <div class="col-12">
+
+                                                                    <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                                </div>
+                                                                <div class="col-12">
+
+                                                                    <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <input type="time" name="absenmasuk" class="form-control" value="{{$waktu}}" hidden>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <input type="time" name="absenkeluar" class="form-control" value="00:00:00" hidden>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <input type="text" name="status" class="form-control" value="Terlambat" hidden>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <input type="file" name="keterangan" class="form-control" required>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <button type="submit" class="btn btn-danger">Anda Terlambat {{$waktu}}</button>
+                                                                </div>
+                                                            </form><!-- Vertical Form -->
+
+
+                                                            @endif
 
                                 </div>
                             </div>
@@ -124,25 +135,14 @@
                     </div>
                 </div><!-- End Sales Card -->
 
-                <!-- Sales Card -->
+                <!-- Sales Card 2 -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card sales-card">
 
-                        <div class="filter">
-                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <li class="dropdown-header text-start">
-                                    <h6>Filter</h6>
-                                </li>
 
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                            </ul>
-                        </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Absen Pulang Kerja<span>| Today</span></h5>
+                            <h5 class="card-title">Absen Selesai Kerja <span>| Today</span></h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -152,7 +152,91 @@
                                     <h6>
                                         <td>{{$Absensi->end_time}}</td>
                                     </h6>
-                                    <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-warning">Absen</button></a>
+                                    @if($Absensi->end_time>$waktu)
+                                    <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
+                                    @elseif($data3=='[{"status":"Terlambats"}]')<a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
+                                    @elseif($Absensi->end_time<$waktu && $data3=='[{"status":"Hadir-2"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
+                                        @elseif($Absensi->batas_end_time<$waktu && $data3=='[{"status":"Terlambats"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
+                                            @elseif($Absensi->end_time<$waktu && $waktu< $Absensi->batas_end_time && $data3=='[{"status":"Terlambat"}]')
+                                                <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                    @method('put')
+                                                    {{ csrf_field() }}
+                                                    <div class="col-12">
+
+                                                        <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                    </div>
+                                                    <div class="col-12">
+
+                                                        <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="time" name="absenkeluar" class="form-control" value="{{$waktu}}" hidden>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="text" name="status" class="form-control" value="Terlambats" hidden>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-danger">Absen Pulang Sekarang {{$waktu}}</button>
+                                                    </div>
+                                                </form><!-- Vertical Form -->
+                                                @elseif($Absensi->end_time<$waktu && $waktu> $Absensi->batas_end_time && $data3=='[{"status":"Terlambat"}]')
+                                                    <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                        @method('put')
+                                                        {{ csrf_field() }}
+                                                        <div class="col-12">
+
+                                                            <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                        </div>
+                                                        <div class="col-12">
+
+                                                            <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="time" name="absenkeluar" class="form-control" value="{{$waktu}}" hidden>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="text" name="status" class="form-control" value="Terlambat" hidden>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-danger">Absen Pulang Sekarang {{$waktu}}</button>
+                                                        </div>
+                                                    </form><!-- Vertical Form -->
+                                                    @elseif($Absensi->end_time<$waktu && $waktu < $Absensi->batas_end_time)
+                                                        <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                            @method('put')
+                                                            {{ csrf_field() }}
+                                                            <div class="col-12">
+
+                                                                <input type="text" name="namakaryawan" class="form-control" value='{{ Auth::user()->name }}' hidden>
+
+                                                            </div>
+                                                            <div class="col-12">
+
+                                                                <input type="text" name="jabatan" class="form-control" value="{{ Auth::user()->jabatan }}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="date" name="tanggal" class="form-control" value="{{$tanggal}}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="time" name="absenkeluar" class="form-control" value="{{$waktu}}" hidden>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <input type="text" name="status" class="form-control" value="Hadir-2" hidden>
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn btn-info">Absen Sekarang {{$waktu}}</button>
+                                                            </div>
+                                                        </form><!-- Vertical Form -->
+
+                                                        @endif
 
                                 </div>
                             </div>

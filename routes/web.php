@@ -82,6 +82,9 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
     Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
     Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
+    Route::put('/tableLogKehadiran2/{tanggal}', [KehadiranLogController::class, 'update2']);
+    //FormSakit
+    Route::get('/sakit', [HomeKaryawanController::class, 'sakit']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);

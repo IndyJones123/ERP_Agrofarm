@@ -33,23 +33,23 @@
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Deskripsi Absensi</label>
-                        <input type="text" name="deskripsi" class="form-control" id="inputEmail4">
+                        <input type="text" name="deskripsi" class="form-control">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Absen Masuk</label>
-                        <input type="time" name="start_time" class="form-control" id="inputEmail4">
+                        <input type="time" name="start_time" class="form-control">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Batas Keterlambatan Absen Masuk</label>
-                        <input type="time" name="batas_start_time" class="form-control" id="inputEmail4">
+                        <input type="time" name="batas_start_time" class="form-control">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Absen Pulang</label>
-                        <input type="time" name="end_time" class="form-control" id="inputEmail4">
+                        <input type="time" name="end_time" class="form-control">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Batas Keterlambatan Absen Pulang</label>
-                        <input type="time" name="batas_end_time" class="form-control" id="inputEmail4">
+                        <input type="time" name="batas_end_time" class="form-control">
                     </div>
                     <div class="col-12">
                         @foreach($data2 as $jabatan)

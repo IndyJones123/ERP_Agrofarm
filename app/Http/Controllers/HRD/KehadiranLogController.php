@@ -96,6 +96,30 @@ class KehadiranLogController extends Controller
         $data = KehadiranLogModel::all();
         return View('admin.HRD.kehadiran.logkehadiran', compact(["data"]));
     }
+    public function update2($tanggal, Request $request)
+    {
+        $namakaryawan = $request->input('namakaryawan');
+        $jabatan = $request->input('jabatan');
+        $tanggal = $request->input('tanggal');
+        $absenkeluar = $request->input('absenkeluar');
+        $status = $request->input('status');
+
+
+        $data = KehadiranLogModel::find($tanggal);
+
+        $data = KehadiranLogModel::where('tanggal', $tanggal)
+            ->update([
+                'namakaryawan' => $namakaryawan,
+                'jabatan' => $jabatan,
+                'tanggal' => $tanggal,
+                'absenkeluar' => $absenkeluar,
+                'status' => $status,
+
+            ]);
+        return back();
+    }
+
+
     public function delete($id)
     {
         $data = KehadiranLogModel::find($id);
