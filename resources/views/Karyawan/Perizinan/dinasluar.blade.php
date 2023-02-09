@@ -16,8 +16,8 @@
     </nav>
 </div>
 <!-- End Page Title -->
-@if($data3=='[{"status":"Pending-sakit"}]' )
-<h5 class="card-title">Form Sakit Anda Menunggu Konfirmasi</h5>
+@if($data3=='[{"status":"Pending-dinasluar"}]' )
+<h5 class="card-title">Form Dinas Luar Anda Menunggu Konfirmasi</h5>
 @else
 <section class="section dashboard">
 
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Form Absensi Sakit</h5>
+                <h5 class="card-title">Form Absensi Dinas Luar</h5>
 
                 <!-- Vertical Form -->
                 <form class="row g-3" action="/tableLogKehadiranSakit/create/store" method="post" enctype="multipart/form-data">
@@ -52,10 +52,11 @@
                     </div>
                     <div class="col-12">
 
-                        <input type="text" name="status" value="Pending-sakit" class="form-control" id="inputEmail4" hidden>
+                        <input type="text" name="status" value="Pending-dinasluar" class="form-control" id="inputEmail4" hidden>
                     </div>
                     <div class="col-12">
-                        <label for="inputEmail4" class="form-label"> Upload Surat Dokter</label>
+                        <label for="inputEmail4" class="form-label"> Upload Surat Izin</label>
+                        <h1>Surat Dinas Luar Dapat Didapatkan Di Menu Pengajuan Surat</h1>
                         <input type="file" name="keterangan" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="text-center">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\HRD;
 
 use App\Http\Controllers\Controller;
 use App\Models\KehadiranLogModel;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataLogModel;
 use App\Models\JabatanModel;
 use App\Models\AbsensiModel;
 use App\Models\User;
@@ -33,6 +35,35 @@ class KehadiranLogController extends Controller
         return View('admin/HRD/kehadiran/logkehadiran', compact(["data"]));
     }
 
+    public function store2(Request $request)
+    {
+        $requestData = $request->all();
+        $fileName = time() . $request->file('keterangan')->getClientOriginalName();
+        $path = $request->file('keterangan')->storeAs('images', $fileName, 'public');
+        $requestData['keterangan'] = '/storage/' . $path;
+        KehadiranLogModel::create($requestData);
+        // $namakaryawan = $request->input('namakaryawan');
+        // $jabatan = $request->input('jabatan');
+        // $tanggal = $request->input('tanggal');
+        // $absenmasuk = $request->input('absenmasuk');
+        // $absenkeluar = $request->input('absenkeluar');
+        // $status = $request->input('status');
+        // $keterangan = $request->input('keterangan');
+
+        // $data = DB::table('logkehadiran')
+        //     ->insert([
+        //         'namakaryawan' => $namakaryawan,
+        //         'jabatan' => $jabatan,
+        //         'tanggal' => $tanggal,
+        //         'absenmasuk' => $absenmasuk,
+        //         'absenkeluar' => $absenkeluar,
+        //         'status' => $status,
+        //         'keterangan' => $keterangan,
+        //     ]);
+
+        return back();
+    }
+
     public function store(Request $request)
     {
         $namakaryawan = $request->input('namakaryawan');
@@ -50,6 +81,7 @@ class KehadiranLogController extends Controller
                 'absenmasuk' => $absenmasuk,
                 'absenkeluar' => $absenkeluar,
                 'status' => $status,
+                'keterangan' => 'logo.png'
             ]);
 
         return back();
@@ -125,6 +157,10 @@ class KehadiranLogController extends Controller
         $data = KehadiranLogModel::find($id);
         $data->delete();
         $data = KehadiranLogModel::all();
-        return View('admin.HRD.kehadiran.kehadiran', compact(["data"]));
+        return back();
+    }
+    public function export()
+    {
+        return Excel::download(new DataLogModel(), 'DataLogPegawai.xlsx');
     }
 }

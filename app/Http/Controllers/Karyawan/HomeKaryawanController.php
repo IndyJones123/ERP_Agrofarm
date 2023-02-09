@@ -41,7 +41,47 @@ class HomeKaryawanController extends Controller
         $userjabatan = Auth::user()->jabatan;
         $data = AbsensiModel::where('jabatan', $userjabatan)->get();
         $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
 
-        return view('Karyawan.Perizinan.sakit')->with(compact(['tanggal']));
+        return view('Karyawan.Perizinan.sakit')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
+    }
+    public function izin()
+    {
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
+        $usernama = Auth::user()->name;
+        $userjabatan = Auth::user()->jabatan;
+        $data = AbsensiModel::where('jabatan', $userjabatan)->get();
+        $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
+
+        return view('Karyawan.Perizinan.izin')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
+    }
+    public function dinasluar()
+    {
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
+        $usernama = Auth::user()->name;
+        $userjabatan = Auth::user()->jabatan;
+        $data = AbsensiModel::where('jabatan', $userjabatan)->get();
+        $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
+
+        return view('Karyawan.Perizinan.dinasluar')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
+    }
+    public function cuti()
+    {
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
+        $usernama = Auth::user()->name;
+        $userjabatan = Auth::user()->jabatan;
+        $data = AbsensiModel::where('jabatan', $userjabatan)->get();
+        $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
+
+        return view('Karyawan.Perizinan.cuti')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
     }
 }

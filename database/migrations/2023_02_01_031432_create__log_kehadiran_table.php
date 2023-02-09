@@ -21,6 +21,7 @@ return new class extends Migration
             $table->time('absenmasuk');
             $table->time('absenkeluar');
             $table->string('status');
+            $table->string('keterangan', 300);
             $table->timestamps();
         });
     }

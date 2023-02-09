@@ -28,18 +28,21 @@
                     <div class="card info-card sales-card">
 
                         <div class="filter">
+
+
+                            @if('22:00:00'>$waktu && $data3!='[{"status":"Pending-cuti"}]' && $data3!='[{"status":"Pending-dinasluar"}]' && $data3!='[{"status":"Pending-sakit"}]' && $data3!='[{"status":"Pending-izin"}]' && $data3!='[{"status":"Terlambat"}]' && $data3!='[{"status":"Terlambats"}]' && $data3!='[{"status":"Hadir-1"}]' && $data3!='[{"status":"Hadir-2"}]' && $data3!='[{"status":"izin"}]')
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
                                     <h6>Tidak Masuk</h6>
                                 </li>
-                                @if('22:00:00'>$waktu && $data3!='[{"status":"Terlambat"}]' && $data3!='[{"status":"Terlambats"}]' && $data3!='[{"status":"Hadir-1"}]' && $data3!='[{"status":"Hadir-2"}]')
                                 <li><a class="dropdown-item" href="/izin">Izin</a></li>
                                 <li><a class="dropdown-item" href="/sakit">Sakit</a></li>
                                 <li><a class="dropdown-item" href="/dinasluar">Dinas Luar</a></li>
                                 <li><a class="dropdown-item" href="/cuti">Cuti</a></li>
-                                @endif
                             </ul>
+                            @endif
+
                         </div>
 
                         <div class="card-body">
@@ -53,9 +56,18 @@
                                     <h6>
                                         <td>{{$Absensi->start_time}}</td>
                                     </h6>
-                                    @if($Absensi->start_time>$waktu)
+                                    @if($data3=='[{"status":"Pending-dinasluar"}]')<a href=""><button type="submit" class="btn btn-info">Izin Dinas Luar Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Izin-ditolak"}]')<a href=""><button type="submit" class="btn btn-info">Izin Anda Hari Ini Ditolak Mohon Hubungi Atasan Anda</button></a>
+                                    @elseif($data3=='[{"status":"Pending-cuti"}]')<a href=""><button type="submit" class="btn btn-info">Izin Cuti Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Pending-sakit"}]')<a href=""><button type="submit" class="btn btn-info">Izin Sakit Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Pending-izin"}]')<a href=""><button type="submit" class="btn btn-info">Izin Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"cuti"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Cuti Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($data3=='[{"status":"izin"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Izin Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($data3=='[{"status":"dinasluar"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Dinas Luar Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($Absensi->start_time>$waktu)
 
                                     <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
+
                                     @elseif($data3=='[{"status":"Terlambats"}]')<a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
                                     @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Terlambat"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
                                         @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Terlambat"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
@@ -152,7 +164,16 @@
                                     <h6>
                                         <td>{{$Absensi->end_time}}</td>
                                     </h6>
-                                    @if($Absensi->end_time>$waktu)
+
+                                    @if($data3=='[{"status":"Pending-sakit"}]')<a href=""><button type="submit" class="btn btn-info">Izin Sakit Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Pending-dinasluar"}]')<a href=""><button type="submit" class="btn btn-info">Izin Dinas Luar Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Izin-ditolak"}]')<a href=""><button type="submit" class="btn btn-info">Izin Anda Hari Ini Ditolak Mohon Hubungi Atasan Anda</button></a>
+                                    @elseif($data3=='[{"status":"Pending-cuti"}]')<a href=""><button type="submit" class="btn btn-info">Izin Cuti Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"Pending-izin"}]')<a href=""><button type="submit" class="btn btn-info">Izin Anda Hari Ini Dalam Proses</button></a>
+                                    @elseif($data3=='[{"status":"cuti"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Cuti Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($data3=='[{"status":"izin"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Izin Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($data3=='[{"status":"dinasluar"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Dinas Luar Dan Telah Disetujui Atasan</button></a>
+                                    @elseif($Absensi->end_time>$waktu)
                                     <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
                                     @elseif($data3=='[{"status":"Terlambats"}]')<a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
                                     @elseif($Absensi->end_time<$waktu && $data3=='[{"status":"Hadir-2"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>

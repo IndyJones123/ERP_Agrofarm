@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\KehadiranModel;
 use App\Models\JabatanModel;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataKehadiran;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -131,5 +133,10 @@ class KehadiranController extends Controller
         $data->delete();
         $data = KehadiranModel::all();
         return View('admin.HRD.kehadiran.kehadiran', compact(["data"]));
+    }
+
+    public function export()
+    {
+        return Excel::download(new KehadiranModel, 'pegawai.xlsx');
     }
 }

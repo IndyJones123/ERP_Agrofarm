@@ -64,14 +64,17 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tableKehadiran/{id}/edit', [KehadiranController::class, 'edit']);
     Route::put('/tableKehadiran/{id}', [KehadiranController::class, 'update']);
     Route::delete('/tableKehadiran/{id}', [KehadiranController::class, 'delete']);
+    //Export KehadiranData
+    Route::get('/export', [KehadiranController::class, 'export']);
 
     //LogKehadiran
     Route::get('/tableLogKehadiran', [KehadiranLogController::class, 'index']);
     Route::get('/tableLogKehadiran/create', [KehadiranLogController::class, 'create_Kehadiran']);
-
     Route::get('/tableLogKehadiran/{id}/edit', [KehadiranLogController::class, 'edit']);
     Route::put('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'update']);
     Route::delete('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'delete']);
+    //Export KehadiranLogData
+    Route::get('/exportlog', [KehadiranLogController::class, 'export']);
 });
 
 //HRD
@@ -82,9 +85,16 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
     Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
     Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
+    Route::post('/tableLogKehadiranSakit/create/store', [KehadiranLogController::class, 'store2']);
     Route::put('/tableLogKehadiran2/{tanggal}', [KehadiranLogController::class, 'update2']);
     //FormSakit
     Route::get('/sakit', [HomeKaryawanController::class, 'sakit']);
+    //FormIzin
+    Route::get('/izin', [HomeKaryawanController::class, 'izin']);
+    //FormDinasLuar
+    Route::get('/dinasluar', [HomeKaryawanController::class, 'dinasluar']);
+    //FormCuti
+    Route::get('/cuti', [HomeKaryawanController::class, 'cuti']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);

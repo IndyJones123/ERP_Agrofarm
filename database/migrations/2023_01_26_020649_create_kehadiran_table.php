@@ -28,7 +28,6 @@ return new class extends Migration
             $table->integer('hadir');
             $table->integer('wajibhadir');
             $table->integer('sisacuti');
-            $table->string('keterangan', 300);
             $table->timestamps();
         });
     }

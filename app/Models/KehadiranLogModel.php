@@ -9,4 +9,13 @@ class KehadiranLogModel extends Model
 {
     use HasFactory;
     public $table = "logkehadiran";
+    protected $fillable = [
+        'namakaryawan',
+        'jabatan',
+        'tanggal',
+        'absenmasuk',
+        'absenkeluar',
+        'status',
+        'keterangan',
+    ];
 }
