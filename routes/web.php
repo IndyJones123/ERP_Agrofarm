@@ -10,6 +10,7 @@ use App\Http\Controllers\HRD\LiburController;
 use App\Http\Controllers\Karyawan\HomeKaryawanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\TerlambatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,9 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/dinasluar', [HomeKaryawanController::class, 'dinasluar']);
     //FormCuti
     Route::get('/cuti', [HomeKaryawanController::class, 'cuti']);
+    //FormTerlambat
+    Route::get('/terlambat', [TerlambatController::class, 'index']);
+    Route::post('/terlambat/store', [TerlambatController::class, 'store']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);

@@ -348,17 +348,32 @@
                             <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav2">
                                 <li>
                                     <a href="components-cards.html">
-                                        <i class="bi bi-circle"></i><span>Cards</span>
+                                        <i class="bi bi-circle"></i><span>---------Cuti</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="components-cards.html">
-                                        <i class="bi bi-circle"></i><span>Cards</span>
+                                        <i class="bi bi-circle"></i><span>---------Dinas Luar</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="components-cards.html">
-                                        <i class="bi bi-circle"></i><span>Cards</span>
+                                        <i class="bi bi-circle"></i><span>---------Izin</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-cards.html">
+                                        <i class="bi bi-circle"></i><span>---------Terlambat</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-cards.html">
+                                        <i class="bi bi-circle"></i><span>---------Izin Keluar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="components-cards.html">
+                                        <i class="bi bi-circle"></i><span>---------Pinjaman</span>
                                     </a>
                                 </li>
                             </ul>

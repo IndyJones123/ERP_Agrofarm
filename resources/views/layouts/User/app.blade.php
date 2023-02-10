@@ -313,8 +313,8 @@
                     </a>
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="forms-layouts.html">
-                                <i class="bi bi-circle"></i><span>Surat Terlambat</span>
+                            <a href="/terlambat">
+                                <i class="bi bi-circle"></i><span>Surat Izin Terlambat</span>
                             </a>
                         </li>
                         <li>
@@ -324,12 +324,17 @@
                         </li>
                         <li>
                             <a href="forms-editors.html">
-                                <i class="bi bi-circle"></i><span>Surat Izin Dinas Keluar </span>
+                                <i class="bi bi-circle"></i><span>Surat Izin Dinas Keluar</span>
                             </a>
                         </li>
                         <li>
                             <a href="forms-validation.html">
-                                <i class="bi bi-circle"></i><span>Form Validation</span>
+                                <i class="bi bi-circle"></i><span>Surat Izin Cuti</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-validation.html">
+                                <i class="bi bi-circle"></i><span>Surat Permohonan Hutang</span>
                             </a>
                         </li>
                     </ul>
