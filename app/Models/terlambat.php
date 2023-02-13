@@ -15,5 +15,6 @@ class terlambat extends Model
         'tanggal',
         'keterangan',
         'atasan',
+        'foto',
     ];
 }

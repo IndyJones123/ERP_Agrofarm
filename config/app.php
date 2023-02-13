@@ -187,6 +187,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -214,6 +215,7 @@ return [
         'Location' => 'Stevebauman\Location\Facades\Location',
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
 ];

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\nomerketerlambatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -36,5 +38,19 @@ class HomeController extends Controller
     public function guest()
     {
         return view('landingpages');
+    }
+    public function checksurat(Request $request)
+    {
+        if ($request->has('search1')) {
+            $data = nomerketerlambatan::where('nomerketerlambatan', 'LIKE', '%' . $request->search1 . '%')->get();
+        } else {
+            $data = nomerketerlambatan::all();
+        }
+        return View('checknomer', compact(["data"]));
+    }
+    public function profile()
+    {
+        $data = Auth::user()->all;
+        return View('Profile', compact(["data"]));
     }
 }

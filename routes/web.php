@@ -76,6 +76,13 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::delete('/tableLogKehadiran/{id}', [KehadiranLogController::class, 'delete']);
     //Export KehadiranLogData
     Route::get('/exportlog', [KehadiranLogController::class, 'export']);
+
+    //Perizinan
+    //Keterlambatan
+    Route::get('/terlambatAdmin', [TerlambatController::class, 'admin']);
+    Route::get('/tableTerlambat/{id}/edit', [TerlambatController::class, 'edit']);
+    Route::put('/tableTerlambat/{id}', [TerlambatController::class, 'update']);
+    Route::get('/pdfterlambat/{id}', [TerlambatController::class, 'pdfterlambat']);
 });
 
 //HRD
@@ -106,3 +113,7 @@ Route::get('/', [LandingpageController::class, 'index']);
 Route::get('/landingpage/detail1', [LandingpageController::class, 'detail1']);
 
 Route::get('/guest', [HomeController::class, 'guest']);
+
+Route::get('/checksurat', [HomeController::class, 'checksurat']);
+
+Route::get('/profile', [HomeController::class, 'profile']);

@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('terlambat', function (Blueprint $table) {
+        Schema::create('nomerketerlambatan', function (Blueprint $table) {
             $table->id();
-            $table->string('namakaryawan');
-            $table->string('jabatan');
-            $table->date('tanggal');
-            $table->string('keterangan');
-            $table->string('atasan');
-            $table->string('foto', 300);
+            $table->integer('nomerketerlambatan');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('terlambat');
+        Schema::dropIfExists('nomerketerlambatan');
     }
 };

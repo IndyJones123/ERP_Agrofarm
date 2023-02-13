@@ -32,16 +32,34 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title">Form Permohonan Terlambat > 15 Menit dari Jam Kerja Hari Ini</h5>
-                            @foreach($data as $terlambat2)
-                            @if($terlambat2->atasan!='null')
-                            <h1> Permohonan Anda Telah Dikonfimasi Oleh Atasan Anda Mohon Download File Di Samping Ini Untuk Dicantumkan Pada Saat Absensi</h1>
-                            <!-- Vertical Form -->
+                            <h5 class="card-title">Form Permohonan Terlambat > 15 Menit dari Jam Kerja</h5>
 
-                            @else
-                            <h1> Sedang Dalam Proses Konfirmasi dan dapat diunduh di Kanan Halaman Ini</h1>
-                            @endif
-                            @endforeach
+                            <!-- Vertical Form -->
+                            <form class="row g-3" action="/terlambat/store" method="post">
+                                {{ csrf_field() }}
+                                <div class="col-12">
+                                    <label for="inputNanme4" class="form-label">Nama Karyawan</label>
+                                    <input type="text" value="{{ Auth::user()->name }}" name="namakaryawan" class="form-control" id="inputNanme4" readonly>
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputEmail4" class="form-label">Jabatan Karyawan</label>
+                                    <input type="text" value="{{ Auth::user()->jabatan }}" name="jabatan" class="form-control" id="inputEmail4" readonly>
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputEmail4" class="form-label">Tanggal</label>
+                                    <input type="date" name="tanggal" value="{{$tanggal}}" class="form-control" id="inputEmail4" readonly>
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputEmail4" class="form-label">Alasan Keterlambatan</label>
+                                    <input type="text" name="keterangan" class="form-control" id="inputEmail4">
+                                </div>
+                                <input type="file" name="foto" value="null.png" hidden>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                            </form><!-- Vertical Form -->
+
                         </div>
 
                     </div>
@@ -76,13 +94,12 @@
                             @foreach($data2 as $terlambat)
                             <div class="post-item clearfix">
                                 @if($terlambat->atasan=='null')
-
+                                <img src="assets/img/news-1.jpg" alt="">
                                 <h4><a href="#">Permohonan {{$terlambat->tanggal}} <br> Masih Belum Disetujui</a></h4>
                                 <p>Mohon Menunggu Konfirmasi Permohonan Apabila Sudah Dapat Didownload Gambar Disamping kiri berikut</p>
                                 @else
-                                <a href="dokumen/{{$terlambat->foto}}">Download</a></i>
-                                <h4><a href="#">Permohonan {{$terlambat->tanggal}} <br> Disetujui By {{$terlambat->atasan}}</a></h4>
-                                <p>Mohon Lakukan Absensi Segera Dengan Melampirkan Gambar Disamping</p>
+                                <h4><a href="#">Disetujui By {{$terlambat->atasan}}</a></h4>
+                                <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
                                 @endif
 
                             </div>
