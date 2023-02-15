@@ -78,11 +78,11 @@
                                 @if($terlambat->atasan=='null')
 
                                 <h4><a href="#">Permohonan {{$terlambat->tanggal}} <br> Masih Belum Disetujui</a></h4>
-                                <p>Mohon Menunggu Konfirmasi Permohonan Apabila Sudah Dapat Didownload Gambar Disamping kiri berikut</p>
+                                <p>Mohon Menunggu Konfirmasi Permohonan Apabila Sudah Dapat Didownload PDF Disamping kiri berikut</p>
                                 @else
                                 <a href="dokumen/{{$terlambat->foto}}">Download</a></i>
                                 <h4><a href="#">Permohonan {{$terlambat->tanggal}} <br> Disetujui By {{$terlambat->atasan}}</a></h4>
-                                <p>Mohon Lakukan Absensi Segera Dengan Melampirkan Gambar Disamping</p>
+                                <p>Mohon Lakukan Absensi Segera Dengan Melampirkan PDF Disamping</p>
                                 @endif
 
                             </div>

@@ -67,7 +67,7 @@ class TerlambatController extends Controller
         }
         return View('admin/HRD/Perizinan/terlambat', compact(["data"]));
     }
-    public function edit($id)
+    public function edit($id, $pimpinan)
     {
         $data = terlambat::find($id);
         $terlambat = [
@@ -80,6 +80,17 @@ class TerlambatController extends Controller
             'foto' => $data->foto,
             'created_at' => $data->created_at,
         ];
+
+        $data = terlambat::where('id', $id)
+            ->update([
+                'atasan' => $id,
+                'namakaryawan' => $data->namakaryawan,
+                'keterangan' => $data->keterangan,
+                'atasan' => $pimpinan,
+                'jabatan' => $data->jabatan,
+                'created_at' => $data->created_at,
+                'foto' => $data->foto,
+            ]);
 
         return view('admin.HRD.Perizinan.editTerlambat', $terlambat);
     }

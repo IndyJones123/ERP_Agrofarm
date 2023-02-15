@@ -84,7 +84,7 @@
                         <td>{{$Terlambat->keterangan}}</td>
                         <td>{{$Terlambat->foto}}</td>
                         <td>{{$Terlambat->created_at}}</td>
-                        <td> <a href="/tableTerlambat/{{$Terlambat->id}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
+                        <td> <a href="/tableTerlambat/{{$Terlambat->id}}/{{ Auth::user()->name }}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
 
                         </td>
                     </tr>

@@ -80,7 +80,7 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     //Perizinan
     //Keterlambatan
     Route::get('/terlambatAdmin', [TerlambatController::class, 'admin']);
-    Route::get('/tableTerlambat/{id}/edit', [TerlambatController::class, 'edit']);
+    Route::get('/tableTerlambat/{id}/{pegawai}/edit', [TerlambatController::class, 'edit']);
     Route::put('/tableTerlambat/{id}', [TerlambatController::class, 'update']);
     Route::get('/pdfterlambat/{id}', [TerlambatController::class, 'pdfterlambat']);
 });

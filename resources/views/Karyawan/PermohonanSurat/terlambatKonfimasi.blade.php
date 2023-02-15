@@ -96,10 +96,11 @@
                                 @if($terlambat->atasan=='null')
                                 <img src="assets/img/news-1.jpg" alt="">
                                 <h4><a href="#">Permohonan {{$terlambat->tanggal}} <br> Masih Belum Disetujui</a></h4>
-                                <p>Mohon Menunggu Konfirmasi Permohonan Apabila Sudah Dapat Didownload Gambar Disamping kiri berikut</p>
+                                <p>Mohon Menunggu Konfirmasi Permohonan Apabila Sudah Dapat Didownload PDF Disamping kiri berikut</p>
                                 @else
+                                <a href="dokumen/{{$terlambat->foto}}">Download <br>PDF</a></i>
                                 <h4><a href="#">Disetujui By {{$terlambat->atasan}}</a></h4>
-                                <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                                <p>Permohonan Surat Keterlambatan Telah Dikonfirmasi Anda Sudah Dapat Download PDF Disamping kiri berikut</p>
                                 @endif
 
                             </div>
