@@ -139,11 +139,36 @@ class KehadiranLogController extends Controller
 
         $data = KehadiranLogModel::find($tanggal);
 
-        $data = KehadiranLogModel::where('tanggal', $tanggal)
+        $data = KehadiranLogModel::where('tanggal', $tanggal)->where('namakaryawan', $namakaryawan)
             ->update([
                 'namakaryawan' => $namakaryawan,
                 'jabatan' => $jabatan,
                 'tanggal' => $tanggal,
+                'absenkeluar' => $absenkeluar,
+                'status' => $status,
+
+            ]);
+        return back();
+    }
+
+    public function update3($tanggal, Request $request)
+    {
+        $namakaryawan = $request->input('namakaryawan');
+        $jabatan = $request->input('jabatan');
+        $tanggal = $request->input('tanggal');
+        $absenmasuk = $request->input('absenmasuk');
+        $absenkeluar = $request->input('absenkeluar');
+        $status = $request->input('status');
+
+
+        $data = KehadiranLogModel::find($tanggal);
+
+        $data = KehadiranLogModel::where('tanggal', $tanggal)->where('namakaryawan', $namakaryawan)
+            ->update([
+                'namakaryawan' => $namakaryawan,
+                'jabatan' => $jabatan,
+                'tanggal' => $tanggal,
+                'absenmasuk' => $absenmasuk,
                 'absenkeluar' => $absenkeluar,
                 'status' => $status,
 

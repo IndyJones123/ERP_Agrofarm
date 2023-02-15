@@ -94,7 +94,10 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
     Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
     Route::post('/tableLogKehadiranSakit/create/store', [KehadiranLogController::class, 'store2']);
+    //absen Pulang Kerja
     Route::put('/tableLogKehadiran2/{tanggal}', [KehadiranLogController::class, 'update2']);
+    //absen Mulai Kerja
+    Route::put('/tableLogKehadiran3/{tanggal}', [KehadiranLogController::class, 'update3']);
     //FormSakit
     Route::get('/sakit', [HomeKaryawanController::class, 'sakit']);
     //FormIzin

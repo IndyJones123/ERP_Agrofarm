@@ -75,7 +75,8 @@
                                                 @elseif($Absensi->start_time<$waktu && $data3=='[{"status":"Hadir-1"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Masuk Hari Ini</button></a>
                                                     @elseif($Absensi->start_time<$waktu && $waktu < $Absensi->batas_start_time)
 
-                                                        <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                        <form class="row g-3" action="/tableLogKehadiran3/{{$tanggal}}" method="post">
+                                                            @method('put')
                                                             {{ csrf_field() }}
                                                             <div class="col-12">
 
@@ -106,7 +107,8 @@
 
                                                         @elseif($Absensi->start_time<$waktu && 'waktu'>$Absensi->batas_start_time)
 
-                                                            <form class="row g-3" action="/tableLogKehadiran/create/store" method="post">
+                                                            <form class="row g-3" action="/tableLogKehadiran3/{{$tanggal}}" method="post">
+                                                                @method('put')
                                                                 {{ csrf_field() }}
                                                                 <div class="col-12">
 
@@ -179,7 +181,7 @@
                                     @elseif($Absensi->end_time<$waktu && $data3=='[{"status":"Hadir-2"}]' ) <a href=""><button type="submit" class="btn btn-success">Anda Sudah Absen Hari Ini</button></a>
                                         @elseif($Absensi->batas_end_time<$waktu && $data3=='[{"status":"Terlambats"}]' ) <a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>
                                             @elseif($Absensi->end_time<$waktu && $waktu< $Absensi->batas_end_time && $data3=='[{"status":"Terlambat"}]')
-                                                <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                <form class="row g-3" action="/tableLogKehadiran2/{{$tanggal}}" method="post">
                                                     @method('put')
                                                     {{ csrf_field() }}
                                                     <div class="col-12">
@@ -205,7 +207,7 @@
                                                     </div>
                                                 </form><!-- Vertical Form -->
                                                 @elseif($Absensi->end_time<$waktu && $waktu> $Absensi->batas_end_time && $data3=='[{"status":"Terlambat"}]')
-                                                    <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                    <form class="row g-3" action="/tableLogKehadiran2/{{$tanggal}}" method="post">
                                                         @method('put')
                                                         {{ csrf_field() }}
                                                         <div class="col-12">
@@ -231,7 +233,7 @@
                                                         </div>
                                                     </form><!-- Vertical Form -->
                                                     @elseif($Absensi->end_time<$waktu && $waktu < $Absensi->batas_end_time)
-                                                        <form class="row g-3" action="/tableLogKehadiran2/{tanggal}" method="post">
+                                                        <form class="row g-3" action="/tableLogKehadiran2/{{$tanggal}}" method="post">
                                                             @method('put')
                                                             {{ csrf_field() }}
                                                             <div class="col-12">

@@ -14,7 +14,7 @@ class LogDaily extends Command
      *
      * @var string
      */
-    protected $signature = 'test:insert';
+    protected $signature = 'minute:insert';
 
     /**
      * The console command description.

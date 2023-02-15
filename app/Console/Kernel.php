@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('test:insert')->dailyAt('00:01')->timezone('Asia/Jakarta');
+        $schedule->command('minute:insert')->dailyAt('12:56')->timezone('Asia/Jakarta');
     }
 
     /**
