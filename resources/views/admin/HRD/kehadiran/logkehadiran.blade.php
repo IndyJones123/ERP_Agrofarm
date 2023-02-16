@@ -93,8 +93,11 @@
                             </td>
                             <td style="text-align: center; vertical-align: middle"><input type="time" name="absenkeluar" value="{{$LogKehadiran->absenkeluar}}" readonly></td>
                             <td style="text-align: center; vertical-align: middle"><select id="status" name="status">
+
                                     <option value="Pending-izin" {{$LogKehadiran->status == "Pending-izin" ? 'selected' : ''}}>Pending Izin</option>
                                     <option value="Pending-sakit" {{$LogKehadiran->status == "Pending-sakit" ? 'selected' : ''}}>Pending Sakit</option>
+                                    <option value="Pending-izin" {{$LogKehadiran->status == "BelumAbsen" ? 'selected' : ''}}>Belum Absen</option>
+                                    <option value="Pending-izin" {{$LogKehadiran->status == "TidakMasuk" ? 'selected' : ''}}>Alpha</option>
                                     <option value="Pending-dinasluar" {{$LogKehadiran->status == "Pending-dinasluar" ? 'selected' : ''}}>Pending Dinas Luar</option>
                                     <option value="Pending-cuti" {{$LogKehadiran->status == "Pending-cuti" ? 'selected' : ''}}>Pending Cuti</option>
                                     <option value="Hadir-1" {{$LogKehadiran->status == "Hadir-1" ? 'selected' : ''}}>Hadir-1</option>
@@ -102,21 +105,30 @@
                                     <option value="terlambats" {{$LogKehadiran->status == "terlambats" ? 'selected' : ''}}>Terlambat</option>
                                     <option value="cuti" {{$LogKehadiran->status == "cuti" ? 'selected' : ''}}>Cuti</option>
                                     <option value="dinasluar" {{$LogKehadiran->status == "dinasluar" ? 'selected' : ''}}>Dinas Luar</option>
-                                    <option value="absen" {{$LogKehadiran->status == "absen" ? 'selected' : ''}}>Absen</option>
                                     <option value="izin" {{$LogKehadiran->status == "izin" ? 'selected' : ''}}>Izin</option>
                                     <option value="sakit" {{$LogKehadiran->status == "sakit" ? 'selected' : ''}}>Sakit</option>
                                     <option value="Izin-ditolak" {{$LogKehadiran->status == "Izin-ditolak" ? 'selected' : ''}}>Izin Ditolak</option>
                                 </select></td>
                             <td style="text-align: center; vertical-align: middle"><img src="{{$LogKehadiran->keterangan}}" alt="" height="100px" width="100px"></td>
-                            @if($LogKehadiran->status=='Hadir-1' || $LogKehadiran->status=='Hadir-2' || $LogKehadiran->status=='terlambat' || $LogKehadiran->status=='terlambats' || $LogKehadiran->status=='cuti' || $LogKehadiran->status=='dinasluar' || $LogKehadiran->status=='absen' || $LogKehadiran->status=='izin' || $LogKehadiran->status=='Izin-ditolak')
+                            @if($LogKehadiran->status=='Hadir-1' || $LogKehadiran->status=='Hadir-2' || $LogKehadiran->status=='Terlambat' || $LogKehadiran->status=='terlambats' || $LogKehadiran->status=='cuti' || $LogKehadiran->status=='dinasluar' || $LogKehadiran->status=='absen' || $LogKehadiran->status=='izin' || $LogKehadiran->status=='Izin-ditolak')
                             <td style="text-align: center; vertical-align: middle"> <a class="btn btn-success">Verified</a></a>
                                 <br><br>
-                                <button type="submit" class="btn btn-warning">Update Status</button></a>
+                                <button type="submit" class="btn btn-info">Update Status</button></a>
                             </td>
 
 
 
                             @elseif($LogKehadiran->status=='Pending-izin')
+                            <td style="text-align: center; vertical-align: middle"> <button type="submit" class="btn btn-warning">Update Status</button></a>
+
+                            </td>
+
+                            @elseif($LogKehadiran->status=='BelumAbsen')
+                            <td style="text-align: center; vertical-align: middle"> <button type="submit" class="btn btn-warning">Update Status</button></a>
+
+                            </td>
+
+                            @elseif($LogKehadiran->status=='TidakMasuk')
                             <td style="text-align: center; vertical-align: middle"> <button type="submit" class="btn btn-warning">Update Status</button></a>
 
                             </td>

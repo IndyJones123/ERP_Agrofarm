@@ -99,6 +99,9 @@
                                                             <div class="col-12">
                                                                 <input type="text" name="status" class="form-control" value="Hadir-1" hidden>
                                                             </div>
+                                                            <div class="col-12">
+                                                                <input type="file" name="keterangan" value="null.png" class="form-control" hidden>
+                                                            </div>
                                                             <div class="text-center">
                                                                 <button type="submit" class="btn btn-info">Absen Sekarang {{$waktu}}</button>
                                                             </div>

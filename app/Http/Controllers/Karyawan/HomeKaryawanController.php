@@ -84,4 +84,17 @@ class HomeKaryawanController extends Controller
 
         return view('Karyawan.Perizinan.cuti')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
     }
+    public function keluar()
+    {
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
+        $usernama = Auth::user()->name;
+        $userjabatan = Auth::user()->jabatan;
+        $data = AbsensiModel::where('jabatan', $userjabatan)->get();
+        $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
+        $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
+
+        return view('Karyawan.Perizinan.keluar')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal']));
+    }
 }

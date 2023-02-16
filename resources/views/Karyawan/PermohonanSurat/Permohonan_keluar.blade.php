@@ -12,11 +12,11 @@
 <section class="section dashboard">
 
     <div class="pagetitle">
-        <h1>Surat Izin Terlambat</h1>
+        <h1>Surat Izin Keluar Dari Kantor</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"></li>Pengajuan Surat</li>
-                <li class="breadcrumb-item active">Surat Izin Terlambat</li>
+                <li class="breadcrumb-item active">Surat Izin Keluar Dari Kantor</li>
             </ol>
         </nav>
     </div>
@@ -32,7 +32,7 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title">Form Permohonan Terlambat > 15 Menit dari Jam Kerja Hari Ini</h5>
+                            <h5 class="card-title">Form Permohonan Izin Keluar Dari Kantor</h5>
                             @foreach($data as $terlambat2)
                             @if($terlambat2->atasan!='null')
                             <h1> Permohonan Anda Telah Dikonfimasi Oleh Atasan Anda Mohon Download File Di Samping Ini Untuk Dicantumkan Pada Saat Absensi</h1>
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="card-body pb-0">
-                        <h5 class="card-title">History Surat Keterlambatan</span></h5>
+                        <h5 class="card-title">History Surat Izin Keluar Kantor</span></h5>
 
                         <div class="news">
                             @foreach($data2 as $terlambat)
@@ -96,7 +96,6 @@
 
 
         </div>
-
     </section>
 
 

@@ -314,22 +314,22 @@
                             </a>
                         </li>
                         <li>
-                            <a href="forms-elements.html">
+                            <a href="/keluar">
                                 <i class="bi bi-circle"></i><span>Surat Izin Keluar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-editors.html">
+                            <a href="/permohonandinasluar">
                                 <i class="bi bi-circle"></i><span>Surat Izin Dinas Keluar</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-validation.html">
+                            <a href="/permohonancuti">
                                 <i class="bi bi-circle"></i><span>Surat Izin Cuti</span>
                             </a>
                         </li>
                         <li>
-                            <a href="forms-validation.html">
+                            <a href="/permohonanhutang">
                                 <i class="bi bi-circle"></i><span>Surat Permohonan Hutang</span>
                             </a>
                         </li>

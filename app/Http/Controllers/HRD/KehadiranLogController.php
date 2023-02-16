@@ -174,6 +174,32 @@ class KehadiranLogController extends Controller
 
             ]);
         return back();
+
+        $requestData = $request->all();
+        $fileName = time() . $request->file('keterangan')->getClientOriginalName();
+        $path = $request->file('keterangan')->storeAs('images', $fileName, 'public');
+        $requestData['keterangan'] = '/storage/' . $path;
+        KehadiranLogModel::update($requestData)->where('');
+        // $namakaryawan = $request->input('namakaryawan');
+        // $jabatan = $request->input('jabatan');
+        // $tanggal = $request->input('tanggal');
+        // $absenmasuk = $request->input('absenmasuk');
+        // $absenkeluar = $request->input('absenkeluar');
+        // $status = $request->input('status');
+        // $keterangan = $request->input('keterangan');
+
+        // $data = DB::table('logkehadiran')
+        //     ->insert([
+        //         'namakaryawan' => $namakaryawan,
+        //         'jabatan' => $jabatan,
+        //         'tanggal' => $tanggal,
+        //         'absenmasuk' => $absenmasuk,
+        //         'absenkeluar' => $absenkeluar,
+        //         'status' => $status,
+        //         'keterangan' => $keterangan,
+        //     ]);
+
+        return back();
     }
 
 

@@ -10,7 +10,10 @@ use App\Http\Controllers\HRD\LiburController;
 use App\Http\Controllers\Karyawan\HomeKaryawanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\PermohonanDinasluarController;
+use App\Http\Controllers\PermohonanKeluarController;
 use App\Http\Controllers\TerlambatController;
+use App\Models\Permohonan_dinasluar;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +96,7 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
     Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
     Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
+    //Insert log kehadiran
     Route::post('/tableLogKehadiranSakit/create/store', [KehadiranLogController::class, 'store2']);
     //absen Pulang Kerja
     Route::put('/tableLogKehadiran2/{tanggal}', [KehadiranLogController::class, 'update2']);
@@ -106,9 +110,15 @@ Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/dinasluar', [HomeKaryawanController::class, 'dinasluar']);
     //FormCuti
     Route::get('/cuti', [HomeKaryawanController::class, 'cuti']);
-    //FormTerlambat
+    //FormPermohonanTerlambat
     Route::get('/terlambat', [TerlambatController::class, 'index']);
     Route::post('/terlambat/store', [TerlambatController::class, 'store']);
+    //FormPermohonanKeluar
+    Route::get('/keluar', [PermohonanKeluarController::class, 'index']);
+    Route::post('/keluar/store', [PermohonanKeluarController::class, 'store']);
+    //FormPermohonanKeluar
+    Route::get('/permohonandinasluar', [PermohonanDinasluarController::class, 'index']);
+    Route::post('/permohonandinasluar/store', [Permohonan_dinasluar::class, 'store']);
 });
 
 Route::get('/', [LandingpageController::class, 'index']);
