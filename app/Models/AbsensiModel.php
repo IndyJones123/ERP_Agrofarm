@@ -9,5 +9,5 @@ class AbsensiModel extends Model
 {
     public $table = "absensi";
     use HasFactory;
-    public $fillable = ['tittle', 'deskripsi', 'jabatan', 'start_time', 'batas_start_time', 'end_time', 'batas_end_time'];
+    public $fillable = ['tittle', 'hari', 'jabatan', 'tempat', 'longtitude', 'latitude', 'jarak', 'start_time', 'batas_start_time', 'end_time', 'batas_end_time'];
 }

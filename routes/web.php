@@ -94,7 +94,7 @@ Route::get('/erp', [App\Http\Controllers\HomeController::class, 'index'])->name(
 //midleware Karyawan
 Route::middleware('auth', 'isKaryawan')->group(function () {
     Route::get('/karyawan', [HomeKaryawanController::class, 'index']);
-    Route::get('/karyawan/absen', [HomeKaryawanController::class, 'absen']);
+    Route::get('/karyawan/absensi/{long2}/{lat2}', [HomeKaryawanController::class, 'absen']);
     Route::post('/tableLogKehadiran/create/store', [KehadiranLogController::class, 'store']);
     //Insert log kehadiran
     Route::post('/tableLogKehadiranSakit/create/store', [KehadiranLogController::class, 'store2']);

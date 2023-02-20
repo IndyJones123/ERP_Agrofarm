@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->string('tittle');
-            $table->string('deskripsi');
+            $table->string('tempat');
             $table->string('jabatan');
             $table->time('start_time');
+            $table->string('hari');
+            $table->string('longtitude');
+            $table->string('latitude');
+            $table->integer('jarak');
             $table->time('batas_start_time');
             $table->time('end_time');
             $table->time('batas_end_time');

@@ -29,6 +29,10 @@
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
                 Add Absensi By Input
             </a>
+            <a href="/tableAbsensi/create" class="btn btn-sm btn-primary m-2">
+                <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
+                Add Absensi By Import Excel (CSV/EXCEL)
+            </a>
         </div>
     </div>
 
@@ -62,23 +66,38 @@
                         <th></th>
                         <th></th>
                         <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+
                     </tr>
                     <tr>
                         <th scope="col" style="text-align: center; vertical-align: middle">Judul Absensi</th>
-                        <th scope="col" style="text-align: center; vertical-align: middle">Deskripsi</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Hari</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Jabatan</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Tempat</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Latitude</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Longitude</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Jarak (Meter)</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Absen Kerja</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Batas Kerja</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Absen Pulang</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Batas Pulang</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($data as $Absensi)
                     <tr>
                         <td scope="row">{{$Absensi->tittle}}</td>
-                        <td>{{$Absensi->deskripsi}}</td>
+                        <td>{{$Absensi->hari}}</td>
                         <td>{{$Absensi->jabatan}}</td>
+                        <td>{{$Absensi->tempat}}</td>
+                        <td>{{$Absensi->latitude}}</td>
+                        <td>{{$Absensi->longtitude}}</td>
+                        <td>{{$Absensi->jarak}}</td>
                         <td>{{$Absensi->start_time}}</td>
                         <td>{{$Absensi->batas_start_time}}</td>
                         <td>{{$Absensi->end_time}}</td>

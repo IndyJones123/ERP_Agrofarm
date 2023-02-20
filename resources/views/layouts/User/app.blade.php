@@ -291,7 +291,7 @@
                 </li><!-- End Dashboard Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link " href="/karyawan/absen">
+                    <a onclick="myFunction()" id="demo" href="#" class="nav-link">
                         <i class="bi bi-circle"></i>
                         <span>Absen</span>
                     </a>
@@ -417,6 +417,22 @@
 
     <!-- Template Main JS File -->
     <script src="{{asset('assets/js/main.js')}}"></script>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function myFunction() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("demo").href = "/karyawan/absensi/" + position.coords.latitude + "/" + position.coords.longitude;
+        }
+    </script>
 </body>
 
 </html>

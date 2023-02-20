@@ -175,11 +175,11 @@ class KehadiranLogController extends Controller
             ]);
         return back();
 
-        $requestData = $request->all();
-        $fileName = time() . $request->file('keterangan')->getClientOriginalName();
-        $path = $request->file('keterangan')->storeAs('images', $fileName, 'public');
-        $requestData['keterangan'] = '/storage/' . $path;
-        KehadiranLogModel::update($requestData)->where('');
+        // $requestData = $request->all();
+        // $fileName = time() . $request->file('keterangan')->getClientOriginalName();
+        // $path = $request->file('keterangan')->storeAs('images', $fileName, 'public');
+        // $requestData['keterangan'] = '/storage/' . $path;
+        // KehadiranLogModel::update($requestData)->where('');
         // $namakaryawan = $request->input('namakaryawan');
         // $jabatan = $request->input('jabatan');
         // $tanggal = $request->input('tanggal');

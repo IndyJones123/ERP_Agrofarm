@@ -19,9 +19,9 @@ class AbsensiController extends Controller
         if ($request->has('search1')) {
             $data = AbsensiModel::where('tittle', 'LIKE', '%' . $request->search1 . '%')->get();
         } else if ($request->has('search2')) {
-            $data = AbsensiModel::where('deskripsi', 'LIKE', '%' . $request->search2 . '%')->get();
+            $data = AbsensiModel::where('hari', 'LIKE', '%' . $request->search2 . '%')->get();
         } else if ($request->has('search2')) {
-            $data = AbsensiModel::where('deskripsi', 'LIKE', '%' . $request->search2 . '%')->get();
+            $data = AbsensiModel::where('hari', 'LIKE', '%' . $request->search2 . '%')->get();
         } else {
             $data = AbsensiModel::all();
         }
@@ -39,18 +39,27 @@ class AbsensiController extends Controller
         foreach ($request->input('jabatan') as $key => $value) {
             array_push($will_insert, ['jabatan' => $value]);
             $tittle = $request->input('tittle');
-            $deskripsi = $request->input('deskripsi');
+            $hari = implode(',', $request->input('hari'));
             $start_time = $request->input('start_time');
             $batas_start_time = $request->input('batas_start_time');
+            $tempat = $request->input('tempat');
+            $longtitude = $request->input('longtitude');
+            $latitude = $request->input('latitude');
+            $jarak = $request->input('jarak');
             $end_time = $request->input('end_time');
             $batas_end_time = $request->input('batas_end_time');
+
 
             $data = DB::table('absensi')
                 ->insert([
                     'tittle' => $tittle,
-                    'deskripsi' => $deskripsi,
+                    'hari' => $hari,
                     'start_time' => $start_time,
                     'jabatan' => $value,
+                    'tempat' => $tempat,
+                    'longtitude' => $longtitude,
+                    'latitude' => $latitude,
+                    'jarak' => $jarak,
                     'batas_start_time' => $batas_start_time,
                     'end_time' => $end_time,
                     'batas_end_time' => $batas_end_time,
@@ -65,8 +74,12 @@ class AbsensiController extends Controller
         $create_absensi = [
             'id' => $id,
             'tittle' => $data->tittle,
-            'deskripsi' => $data->deskripsi,
+            'hari' => $data->hari,
             'start_time' => $data->start_time,
+            'tempat' => $data->tempat,
+            'longtitude' => $data->longtitude,
+            'latitude' => $data->latitude,
+            'jarak' => $data->jarak,
             'jabatan' => $data->jabatan,
             'batas_start_time' => $data->batas_start_time,
             'end_time' => $data->end_time,
@@ -79,7 +92,7 @@ class AbsensiController extends Controller
     public function update($id, Request $request)
     {
         $tittle = $request->input('tittle');
-        $deskripsi = $request->input('deskripsi');
+        $hari = $request->input('hari');
         $start_time = $request->input('start_time');
         $jabatan = $request->input('jabatan');
         $batas_start_time = $request->input('batas_start_time');
@@ -92,7 +105,7 @@ class AbsensiController extends Controller
         $data = AbsensiModel::where('id', $id)
             ->update([
                 'tittle' => $tittle,
-                'deskripsi' => $deskripsi,
+                'hari' => $hari,
                 'start_time' => $start_time,
                 'jabatan' => $jabatan,
                 'batas_start_time' => $batas_start_time,

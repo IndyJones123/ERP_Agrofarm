@@ -4,6 +4,16 @@
 
 
 @section('content')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
+<script src="https://unpkg.com/leaflet-geosearch@3.1.0/dist/geosearch.umd.js"></script>
+<style>
+    #leafletMap-registration {
+        height: 400px;
+        /* The height is 400 pixels */
+    }
+</style>
 
 <div class="pagetitle">
     <h1>Dashboard</h1>
@@ -23,7 +33,52 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Form Edit Jabatan</h5>
+                <div id="leafletMap-registration">
+                    <script>
+                        // you want to get it of the window global
+                        const providerOSM = new GeoSearch.OpenStreetMapProvider();
 
+                        //leaflet map
+                        var leafletMap = L.map('leafletMap-registration', {
+                            fullscreenControl: true,
+                            // OR
+                            fullscreenControl: {
+                                pseudoFullscreen: false // if true, fullscreen to page width and height
+                            },
+                            minZoom: 2
+                        }).setView([-7.86375574669215, 111.47185045051454], 14);
+
+                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(leafletMap);
+
+                        let theMarker = {};
+
+                        leafletMap.on('click', function(e) {
+                            let latitude = e.latlng.lat.toString().substring(0, 15);
+                            let longtitude = e.latlng.lng.toString().substring(0, 15);
+                            document.getElementById("latitude").value = latitude;
+                            document.getElementById("longtitude").value = longtitude;
+                            let popup = L.popup()
+                                .setLatLng([latitude, longtitude])
+                                .setContent("Kordinat : " + latitude + " - " + longtitude)
+                                .openOn(leafletMap);
+
+                            if (theMarker != undefined) {
+                                leafletMap.removeLayer(theMarker);
+                            };
+                            theMarker = L.marker([latitude, longtitude]).addTo(leafletMap);
+                        });
+
+                        const search = new GeoSearch.GeoSearchControl({
+                            provider: providerOSM,
+                            style: 'bar',
+                            searchLabel: 'Tentukan Lokasi Dinas',
+                        });
+
+                        leafletMap.addControl(search);
+                    </script>
+                </div>
                 <!-- Vertical Form -->
                 <form class="row g-3" action="/tableAbsensi/{{$id}}" method="post">
                     @method('put')
@@ -33,8 +88,24 @@
                         <input type="text" name="tittle" value="{{$tittle}}" class="form-control" id="inputNanme4">
                     </div>
                     <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Deskripsi Absensi</label>
-                        <input type="text" name="deskripsi" value="{{$deskripsi}}" class="form-control" id="inputEmail4">
+                        <label for="inputEmail4" class="form-label">Hari Absensi</label>
+                        <input type="text" name="hari" value="{{$hari}}" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">Tempat Dinas</label>
+                        <input type="text" name="tempat" value="{{$tempat}}" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">Longtitude (Input By Click Location On Map)</label>
+                        <input type="text" name="longtitude" value="{{$longtitude}}" id="longtitude" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">Latitude (Input By Click Location On Map)</label>
+                        <input type="text" name="latitude" value="{{$latitude}}" id="latitude" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">Batas Jarak Absensi (Meter)</label>
+                        <input type="text" name="jarak" value="{{$jarak}}" class="form-control">
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Absen Masuk</label>
