@@ -53,6 +53,8 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tableAbsensi/{id}/edit', [AbsensiController::class, 'edit']);
     Route::put('/tableAbsensi/{id}', [AbsensiController::class, 'update']);
     Route::delete('/tableAbsensi/{id}', [AbsensiController::class, 'delete']);
+    Route::get('/tableAbsensi/{id}/delete', [AbsensiController::class, 'delete']);
+    Route::get('/tableAbsensi/search', [AbsensiController::class, 'search']);
     //Libur
     Route::get('/tableLiburan', [LiburController::class, 'index']);
     Route::get('/tableLiburan/create', [LiburController::class, 'create_Liburan']);
@@ -86,6 +88,8 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tableTerlambat/{id}/{pegawai}/edit', [TerlambatController::class, 'edit']);
     Route::put('/tableTerlambat/{id}', [TerlambatController::class, 'update']);
     Route::get('/pdfterlambat/{id}', [TerlambatController::class, 'pdfterlambat']);
+
+    //
 });
 
 //HRD
@@ -130,3 +134,5 @@ Route::get('/guest', [HomeController::class, 'guest']);
 Route::get('/checksurat', [HomeController::class, 'checksurat']);
 
 Route::get('/profile', [HomeController::class, 'profile']);
+
+Route::get('/test', [AbsensiController::class, 'test']);

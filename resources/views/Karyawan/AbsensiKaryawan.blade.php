@@ -423,6 +423,7 @@
                                         @elseif($data3=='[{"status":"cuti"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Cuti Dan Telah Disetujui Atasan</button></a>
                                         @elseif($data3=='[{"status":"izin"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Izin Dan Telah Disetujui Atasan</button></a>
                                         @elseif($data3=='[{"status":"dinasluar"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Dinas Luar Dan Telah Disetujui Atasan</button></a>
+                                        @elseif($data3=='[{"status":"sakit"}]')<a href=""><button type="submit" class="btn btn-success">Hari ini Anda Sakit Dan Telah Disetujui Atasan</button></a>
                                         @elseif($Absensi->end_time>$waktu)
                                         <a href=""><button type="submit" class="btn btn-secondary">Belum Saatnya Absen</button></a>
                                         @elseif($data3=='[{"status":"Terlambats"}]')<a href=""><button type="submit" class="btn btn-warning">Anda Sudah Absen Terlambat Hari Ini</button></a>

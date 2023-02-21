@@ -38,11 +38,14 @@
 
     <div class="row">
         <div class="col-lg-8 mt-3">
-            <table class="table table-striped">
+            <table id="allData" class="table table-striped">
                 <thead>
-                    <tr>
+                    <div class="col">
+                        <input type="text" name="search" id="search" placeholder="Search" class="form-control mb-3 ">
+                    </div>
+                    <!-- <tr>
                         <th>
-                            <form action="/tableAbsensi" method="get">
+                            <form id="allData" action="/tableAbsensi" method="get">
                                 <div class="input-group mt-3 mb-3">
                                     <input type="search" name="search1" class="form-control rounded " placeholder="Search Data By Nama Absensi" aria-label="Search" aria-describedby="search-addon" />
                                 </div>
@@ -72,7 +75,7 @@
                         <th></th>
                         <th></th>
 
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="col" style="text-align: center; vertical-align: middle">Judul Absensi</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Hari</th>
@@ -102,7 +105,7 @@
                         <td>{{$Absensi->batas_start_time}}</td>
                         <td>{{$Absensi->end_time}}</td>
                         <td>{{$Absensi->batas_end_time}}</td>
-                        <td> <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
+                        <td> <a href="/tableAbsensi/{{$Absensi->id}}/edit"><button type="submit" class="btn btn-success">Update</button></a>
                             <form action="/tableAbsensi/{{$Absensi->id}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -111,6 +114,28 @@
                         </td>
                     </tr>
                     @endforeach
+                </tbody>
+            </table>
+            <table id="searchData" class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Judul Absensi</th>
+                        <th scope="col">Hari</th>
+                        <th scope="col">Jabatan</th>
+                        <th scope="col">Tempat</th>
+                        <th scope="col">Latitude</th>
+                        <th scope="col">Longitude</th>
+                        <th scope="col">Jarak</th>
+                        <th scope="col">Absen Kerja</th>
+                        <th scope="col">Batas Kerja</th>
+                        <th scope="col">Absen Pulang</th>
+                        <th scope="col">Batas Pulang</th>
+                        <th class="text-center" scope="col">Action</th>
+                    </tr>
+                    <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
+                </thead>
+                <tbody id="Content">
+
                 </tbody>
             </table>
         </div>
@@ -122,3 +147,33 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(e) {
+        $("#searchData").hide();
+        $("#search").keyup(function() {
+            let search = $(this).val();
+            console.log(search);
+
+            if (search) {
+                $("#allData").hide();
+                $("#searchData").show();
+            } else {
+                $("#allData").show();
+                $("#searchData").hide();
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "{{ url('/tableAbsensi/search') }}",
+                data: {
+                    search
+                },
+                success: function(data) {
+                    $('#Content').html(data);
+                }
+            });
+        });
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

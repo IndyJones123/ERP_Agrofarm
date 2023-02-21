@@ -15,15 +15,13 @@ class HomeKaryawanController extends Controller
 {
     public function index()
     {
-
-
         return view('Karyawan.home');
     }
     public function absen($longs2, $lats2)
     {
         $tanggal = Carbon::now()->toDateTimeString();
-        $tanggal = date('Y-m-d', time());
-        $hari = Carbon::now()->toArray();
+        $tanggal = date('Y-m-d', time());;
+        $hari = Carbon::now()->dayOfWeekIso;
         $waktu = Carbon::now()->toTimeString();
         $usernama = Auth::user()->name;
         $userjabatan = Auth::user()->jabatan;
@@ -33,21 +31,21 @@ class HomeKaryawanController extends Controller
 
         // Define your points
         // $long1 = AbsensiModel::where('jabatan', $userjabatan)->where('hari', ($hari['dayOfWeek']))->value('longtitude');
-        $long1 = AbsensiModel::where('jabatan', $userjabatan)->value('longtitude');
+        $long1 = AbsensiModel::where('hari', $hari)->where('jabatan', $userjabatan)->value('longtitude');
         // dd($long1);
         $long2 = $lats2;
         // dd($long2);
-        $lat1 =  AbsensiModel::where('jabatan', $userjabatan)->value('latitude');
+        $lat1 =  AbsensiModel::where('jabatan', $userjabatan)->where('hari', $hari)->value('latitude');
         // dd($lat1);
         $lat2 = $longs2;
-        dd($lat2);
+        // dd($lat2);
 
         $theta = $long1 - $long2;
         $miles = (sin(deg2rad($lat1))) * sin(deg2rad($lat2)) + (cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)));
         $miles = acos($miles);
         $miles = rad2deg($miles);
         $result = $miles * 60 * 1.1515 * 1.609344 * 1000;
-        dd($result);
+        // dd($result);
         return view('Karyawan.AbsensiKaryawan')->with(compact(["data"], ["data2"], ["data3"], ['waktu'], ['tanggal'], ['result']));
     }
     public function sakit()

@@ -74,14 +74,6 @@
                         <input type="number" name="hadir" value="{{$hadir}}" class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Wajib Hadir</label>
-                        <input type="number" name="wajibhadir" value="{{$wajibhadir}}" class="form-control" id="inputEmail4">
-                    </div>
-                    <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Sisa Cuti</label>
-                        <input type="number" name="sisacuti" value="{{$sisacuti}}" class="form-control" id="inputEmail4">
-                    </div>
-                    <div class="col-12">
                         <label for="inputEmail4" class="form-label">status</label>
                         <input type="text" name="status" value="{{$status}}" class="form-control" id="inputEmail4">
                     </div>

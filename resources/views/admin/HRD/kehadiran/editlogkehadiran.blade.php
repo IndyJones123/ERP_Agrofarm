@@ -33,6 +33,14 @@
                         <input type="text" name="namakaryawan" value="{{$namakaryawan}}" class="form-control" id="inputNanme4" readonly>
                     </div>
                     <div class="col-12">
+                        <label for="inputNanme4" class="form-label">Bulan (Isi Dengan Angka) (Contoh : 2 Jika Februari)</label>
+                        <input type="text" name="bulan" value="{{$bulan}}" class="form-control" id="inputNanme4" readonly>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputNanme4" class="form-label">Tahun (Contoh 2023)</label>
+                        <input type="text" name="tahun" value="{{$tahun}}" class="form-control" id="inputNanme4" readonly>
+                    </div>
+                    <div class="col-12">
                         <label for="inputEmail4" class="form-label">Jabatan</label>
                         <input type="text" name="jabatan" value="{{$jabatan}}" class="form-control" id="inputEmail4" readonly>
                     </div>

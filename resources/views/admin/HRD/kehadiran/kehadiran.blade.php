@@ -83,11 +83,11 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th></th>
                     </tr>
                     <tr>
                         <th scope="col" style="text-align: center; vertical-align: middle">Nama Pegawai</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Bulan</th>
+                        <th scope="col" style="text-align: center; vertical-align: middle">Tahun</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">NIK</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Jabatan</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">S</th>
@@ -97,9 +97,6 @@
                         <th scope="col" style="text-align: center; vertical-align: middle">DL</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">T</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">H</th>
-                        <th scope="col" style="text-align: center; vertical-align: middle">WH</th>
-                        <th scope="col" style="text-align: center; vertical-align: middle">SC</th>
-                        <th scope="col" style="text-align: center; vertical-align: middle">Keterangan</th>
                         <th scope="col" style="text-align: center; vertical-align: middle">Action</th>
                     </tr>
                 </thead>
@@ -108,6 +105,7 @@
                     <tr>
                         <td scope="row">{{$Kehadiran->namapegawai}}</td>
                         <td>{{$Kehadiran->bulan}}</td>
+                        <td>{{$Kehadiran->tahun}}</td>
                         <td>{{$Kehadiran->nik}}</td>
                         <td>{{$Kehadiran->jabatan}}</td>
                         <td>{{$Kehadiran->sakit}}</td>
@@ -117,9 +115,6 @@
                         <td>{{$Kehadiran->dinasluar}}</td>
                         <td>{{$Kehadiran->terlambat}}</td>
                         <td>{{$Kehadiran->hadir}}</td>
-                        <td>{{$Kehadiran->wajibhadir}}</td>
-                        <td>{{$Kehadiran->sisacuti}}</td>
-                        <td>{{$Kehadiran->keterangan}}</td>
                         <td> <a href="/tableKehadiran/{{$Kehadiran->id}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
                             <form action="/tableKehadiran/{{$Kehadiran->id}}" method="POST">
                                 {{ csrf_field() }}

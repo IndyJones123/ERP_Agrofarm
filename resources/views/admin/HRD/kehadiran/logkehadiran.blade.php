@@ -110,10 +110,10 @@
                                     <option value="Izin-ditolak" {{$LogKehadiran->status == "Izin-ditolak" ? 'selected' : ''}}>Izin Ditolak</option>
                                 </select></td>
                             <td style="text-align: center; vertical-align: middle"><img src="{{$LogKehadiran->keterangan}}" alt="" height="100px" width="100px"></td>
-                            @if($LogKehadiran->status=='Hadir-1' || $LogKehadiran->status=='Hadir-2' || $LogKehadiran->status=='Terlambat' || $LogKehadiran->status=='terlambats' || $LogKehadiran->status=='cuti' || $LogKehadiran->status=='dinasluar' || $LogKehadiran->status=='absen' || $LogKehadiran->status=='izin' || $LogKehadiran->status=='Izin-ditolak')
+                            @if($LogKehadiran->status=='Hadir-1' || $LogKehadiran->status=='Hadir-2' || $LogKehadiran->status=='Terlambat' || $LogKehadiran->status=='terlambats' || $LogKehadiran->status=='sakit' || $LogKehadiran->status=='cuti' || $LogKehadiran->status=='dinasluar' || $LogKehadiran->status=='absen' || $LogKehadiran->status=='izin' || $LogKehadiran->status=='Izin-ditolak')
                             <td style="text-align: center; vertical-align: middle"> <a class="btn btn-success">Verified</a></a>
                                 <br><br>
-                                <button type="submit" class="btn btn-info">Update Status</button></a>
+                                <button type="submit" class="btn btn-info">Change Status</button></a>
                             </td>
 
 

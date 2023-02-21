@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('kehadiran', function (Blueprint $table) {
             $table->id();
             $table->string('namapegawai');
-            $table->date('bulan');
+            $table->int('bulan');
+            $table->int('tahun');
             $table->string('nik');
             $table->string('jabatan');
             $table->integer('sakit');
@@ -26,8 +27,6 @@ return new class extends Migration
             $table->integer('dinasluar');
             $table->integer('terlambat');
             $table->integer('hadir');
-            $table->integer('wajibhadir');
-            $table->integer('sisacuti');
             $table->timestamps();
         });
     }
