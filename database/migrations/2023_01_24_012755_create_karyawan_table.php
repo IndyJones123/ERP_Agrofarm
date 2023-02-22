@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama')->unique();
             $table->integer('nik')->default('123456');
             $table->string('alamat')->default('null');
             $table->string('jabatan')->default('null');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role')->default('0');
+            $table->integer('issatpam')->default('0');
             $table->timestamps();
         });
     }

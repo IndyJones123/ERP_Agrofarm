@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\HRD;
 
+use App\Exports\DataKaryawan;
 use App\Http\Controllers\Controller;
 use App\Models\KaryawanModel;
+use App\Models\JabatanModel;
 use App\Models\KehadiranModel;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\KaryawanImport;
 
 class KaryawanController extends Controller
 {
@@ -29,7 +33,8 @@ class KaryawanController extends Controller
     public function create_karyawan()
     {
         $data = KaryawanModel::all();
-        return View('admin/HRD/karyawan/addkaryawan', compact(["data"]));
+        $data2 = JabatanModel::all();
+        return View('admin/HRD/karyawan/addkaryawan', compact(["data"], ["data2"]));
     }
     public function store(Request $request)
     {
@@ -42,6 +47,7 @@ class KaryawanController extends Controller
         $role = $request->input('role');
         $notelepon = $request->input('notelepon');
         $date = date('Y-m-d');
+        $issatpam = $request->input('issatpam');
 
 
 
@@ -56,6 +62,7 @@ class KaryawanController extends Controller
                 'role' => $role,
                 'notelepon' => $notelepon,
                 'password' => Hash::make('123'),
+                'issatpam' => $issatpam,
             ]);
 
         $data = DB::table('users')
@@ -69,23 +76,6 @@ class KaryawanController extends Controller
                 'role' => $role,
                 'notelepon' => $notelepon,
                 'password' => Hash::make('123'),
-            ]);
-        $data = DB::table('kehadiran')
-            ->insert([
-                'nik' => $nik,
-                'namapegawai' => $nama,
-                'bulan' => $date,
-                'jabatan' => $jabatan,
-                'sakit' => 0,
-                'izin' => 0,
-                'alpha' => 0,
-                'cuti' => 0,
-                'dinasluar' => 0,
-                'terlambat' => 0,
-                'hadir' => 0,
-                'wajibhadir' => 20,
-                'sisacuti' => 5,
-                'keterangan' => 'null',
             ]);
 
         $data = KaryawanModel::all();
@@ -104,6 +94,7 @@ class KaryawanController extends Controller
             'photo' => $data->photo,
             'role' => $data->role,
             'notelepon' => $data->notelepon,
+            'issatpam' => $data->issatpam,
         ];
 
         return view('admin.HRD.karyawan.editkaryawan', $create_karyawan);
@@ -118,6 +109,7 @@ class KaryawanController extends Controller
         $photo = $request->input('photo');
         $role = $request->input('role');
         $notelepon = $request->input('notelepon');
+        $issatpam = $request->input('issatpam');
 
 
         $data = KaryawanModel::find($id);
@@ -132,6 +124,7 @@ class KaryawanController extends Controller
                 'photo' => $photo,
                 'role' => $role,
                 'notelepon' => $notelepon,
+                'issatpam' => $issatpam,
             ]);
 
         $data2 = User::find($nik);
@@ -162,11 +155,17 @@ class KaryawanController extends Controller
     }
     public function delete($id)
     {
-        $data = KaryawanModel::find($id);
-        $data->delete();
-        $data2 = User::find($id);
-        $data2->delete();
-        $data = KaryawanModel::all();
-        return View('admin.HRD.karyawan.karyawan', compact(["data"]));
+        $data = DB::table('karyawan')->where('email', $id)->delete();
+        $data2 = DB::table('users')->where('email', $id)->delete();
+        return back();
+    }
+    public function export()
+    {
+        return Excel::download(new DataKaryawan(), 'DataKaryawan.xlsx');
+    }
+    public function import()
+    {
+        Excel::import(new KaryawanImport, request()->file('file'));
+        return back();
     }
 }

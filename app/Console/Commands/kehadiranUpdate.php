@@ -38,7 +38,7 @@ class kehadiranUpdate extends Command
         foreach ($data as $kehadiran) {
             $sakit = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'sakit')->count();
             $izin = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'izin')->count();
-            $alpha = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'alpha')->count();
+            $alpha = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'TidakMasuk')->count();
             $cuti = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'cuti')->count();
             $dinasluar = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'dinasluar')->count();
             $Terlambat = DB::table('logkehadiran')->whereYear('tanggal', $tahunbaru)->whereMonth('tanggal', $bulanbaru)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'Terlambat')->count();

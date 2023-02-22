@@ -417,7 +417,7 @@
                                             <td>{{$Absensi->end_time}}</td>
                                         </h6>
                                         @if($data3=='[{"status":"Libur"}]')<a href=""><button type="submit" class="btn btn-info">Hari Ini Adalah Hari Libur</button></a>
-                                        @elseif($data3=='[{"status":"Pending-sakit"}]')<a href=""><button type="submit" class="btn btn-info">Izin Sakit Anda Hari Ini Dalam Proses</button></a>
+                                        @elseify($data3=='[{"status":"Pending-sakit"}]')<a href=""><button type="submit" class="btn btn-info">Izin Sakit Anda Hari Ini Dalam Proses</button></a>
                                         @elseif($data3=='[{"status":"Pending-dinasluar"}]')<a href=""><button type="submit" class="btn btn-info">Izin Dinas Luar Anda Hari Ini Dalam Proses</button></a>
                                         @elseif($data3=='[{"status":"Izin-ditolak"}]')<a href=""><button type="submit" class="btn btn-info">Izin Anda Hari Ini Ditolak Mohon Hubungi Atasan Anda</button></a>
                                         @elseif($data3=='[{"status":"Pending-cuti"}]')<a href=""><button type="submit" class="btn btn-info">Izin Cuti Anda Hari Ini Dalam Proses</button></a>

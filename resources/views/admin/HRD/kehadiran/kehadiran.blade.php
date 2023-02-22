@@ -29,10 +29,6 @@
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
                 Export CSV / PDF
             </a>
-            <a href="/importkehadiran" class="btn btn-sm btn-primary m-2">
-                <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Import CSV / PDF
-            </a>
         </div>
     </div>
 

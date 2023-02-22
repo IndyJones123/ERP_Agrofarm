@@ -25,7 +25,7 @@ class HomeKaryawanController extends Controller
         $waktu = Carbon::now()->toTimeString();
         $usernama = Auth::user()->name;
         $userjabatan = Auth::user()->jabatan;
-        $data = AbsensiModel::where('jabatan', $userjabatan)->get();
+        $data = AbsensiModel::where('jabatan', $userjabatan)->where('hari', $hari)->get();
         $data2 = KehadiranLogModel::where('namakaryawan', $usernama)->get();
         $data3 = KehadiranLogModel::where('namakaryawan', $usernama)->where('tanggal', $tanggal)->get('status');
 

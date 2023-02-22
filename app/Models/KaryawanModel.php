@@ -18,5 +18,6 @@ class KaryawanModel extends Model
         'photo',
         'email',
         'password',
+        'issatpam',
     ];
 }

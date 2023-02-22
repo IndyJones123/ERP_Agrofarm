@@ -60,6 +60,10 @@
                         <label for="inputEmail4" class="form-label">Role</label>
                         <input type="text" name="role" value="{{$role}}" class="form-control" id="inputEmail4">
                     </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">IsSatpam? 1 Jika Iya 0 Jika Bukan</label>
+                        <input type="text" name="issatpam" value="{{$issatpam}}" class="form-control" id="inputEmail4">
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>

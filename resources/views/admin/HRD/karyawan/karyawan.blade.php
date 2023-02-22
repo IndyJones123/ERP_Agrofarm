@@ -21,7 +21,13 @@
 
 <section class="section dashboard">
 
-
+    <div>
+        <form method="POST" action="/karyawanImport" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" value="">
+            <button class="btn btn-sm btn-warning m-2">Add Karyawan By Input</button>
+        </form>
+    </div>
     <!-- Left side columns -->
     <div class="btn-toolbar mt-8 col-md-12">
         <div>
@@ -30,19 +36,16 @@
                 Add Karyawan By Input
             </a>
         </div>
+
         <div>
-            <a href="" class="btn btn-sm btn-primary m-2">
+            <a href="/karyawanExport" class="btn btn-sm btn-warning m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Add Karyawan By CSV
-            </a>
-        </div>
-        <div>
-            <a href="" class="btn btn-sm btn-primary m-2">
-                <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Impot Karyawan By CSV
+                Export Karyawan By CSV
             </a>
         </div>
     </div>
+
+
 
     <div class="row">
         <div class="col-lg-8 mt-3">
@@ -80,6 +83,7 @@
                         <th scope="col">Alamat</th>
                         <th scope="col">Role</th>
                         <th scope="col">Foto</th>
+                        <th scope="col">IsSatpam?</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -93,8 +97,9 @@
                         <td>{{$Karyawan->alamat}}</td>
                         <td>{{$Karyawan->role}}</td>
                         <td>{{$Karyawan->photo}}</td>
+                        <td>{{$Karyawan->issatpam}}</td>
                         <td> <a href="/tablekaryawan/{{$Karyawan->id}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
-                            <form action="/tablekaryawan/{{$Karyawan->id}}" method="POST">
+                            <form action="/tablekaryawan/{{$Karyawan->email}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button type="submit" class="btn btn-danger">DELETE</button>

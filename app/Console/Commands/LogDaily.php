@@ -31,7 +31,7 @@ class LogDaily extends Command
      */
     public function handle()
     {
-        $data = KaryawanModel::all();
+        $data = KaryawanModel::all()->where('role', 0);
         $tanggal = Carbon::now()->toDateTimeString();
         $test = Carbon::now()->toDateString();
         $tanggal = date('Y-m-d', time());
@@ -39,14 +39,26 @@ class LogDaily extends Command
         $weekend = Carbon::now()->isWeekend();
         foreach ($data as $karyawan) {
             $libur = DB::table('liburan')->select('holiday_date')->where('jabatan', $karyawan->jabatan)->where('holiday_date', $test)->value('$test');
-            if ($weekend == true || $tanggal == $libur) {
-                DB::table('logkehadiran')
-                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
-                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'Libur', 'keterangan' => 'null']);
+            if ($karyawan->issatpam == 0) {
+                if ($weekend == true || $tanggal == $libur) {
+                    DB::table('logkehadiran')
+                        ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                        $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'Libur', 'keterangan' => 'null']);
+                } else {
+                    DB::table('logkehadiran')
+                        ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                        $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+                }
             } else {
-                DB::table('logkehadiran')
-                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
-                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+                if ($tanggal == $libur) {
+                    DB::table('logkehadiran')
+                        ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                        $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'Libur', 'keterangan' => 'null']);
+                } else {
+                    DB::table('logkehadiran')
+                        ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                        $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+                }
             }
         }
     }

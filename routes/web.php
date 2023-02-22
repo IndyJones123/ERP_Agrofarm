@@ -46,6 +46,10 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tablekaryawan/{id}/edit', [KaryawanController::class, 'edit']);
     Route::put('/tablekaryawan/{id}', [KaryawanController::class, 'update']);
     Route::delete('/tablekaryawan/{id}', [KaryawanController::class, 'delete']);
+    //Export Karyawan
+    Route::get('/karyawanExport', [KaryawanController::class, 'export']);
+    //Import Karyawan
+    Route::post('/karyawanImport', [KaryawanController::class, 'import']);
     //Absensi
     Route::get('/tableAbsensi', [AbsensiController::class, 'index']);
     Route::get('/tableAbsensi/create', [AbsensiController::class, 'create_Absensi']);

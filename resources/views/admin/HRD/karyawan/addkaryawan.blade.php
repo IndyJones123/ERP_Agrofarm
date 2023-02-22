@@ -45,19 +45,24 @@
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Jabatan</label>
-                        <input type="text" name="jabatan" class="form-control" id="inputEmail4">
+                        <select name="jabatan" class="form-control" id="cars">
+                            @foreach ($data2 as $jabatan)
+                            <option value="{{$jabatan->namajabatan}}">{{$jabatan->namajabatan}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Alamat</label>
                         <input type="text" name="alamat" class="form-control" id="inputEmail4">
                     </div>
-                    <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Foto</label>
-                        <input type="text" name="photo" class="form-control" id="inputEmail4">
-                    </div>
+                    <input type="text" name="photo" value="null" class="form-control" id="inputEmail4" hidden>
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">Role</label>
                         <input type="text" name="role" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">IsSatpam? Isi 1 Jika Iya, Isi 0 Jika Bukan</label>
+                        <input type="text" name="issatpam" class="form-control" id="inputEmail4">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>

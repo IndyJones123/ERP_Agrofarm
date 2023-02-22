@@ -29,9 +29,9 @@
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
                 Add Absensi By Input
             </a>
-            <a href="/tableAbsensi/create" class="btn btn-sm btn-primary m-2">
+            <a href="/tableAbsensi/create" class="btn btn-sm btn-warning m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Add Absensi By Import Excel (CSV/EXCEL)
+                Export Data Absensi CSV
             </a>
         </div>
     </div>
