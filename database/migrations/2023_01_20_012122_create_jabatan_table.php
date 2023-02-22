@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('minimalgaji');
             $table->integer('maksimalgaji');
             $table->integer('gajiharian');
+            $table->integer('gajipokok');
             $table->timestamps();
         });
     }

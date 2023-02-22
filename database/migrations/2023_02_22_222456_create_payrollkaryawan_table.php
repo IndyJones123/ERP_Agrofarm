@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('nik')->unique();
             $table->string('jabatan');
+            $table->date('tanggal');
             $table->integer('gajipokok');
             $table->integer('gajiharian');
             $table->timestamps();

@@ -31,9 +31,9 @@
     <!-- Left side columns -->
     <div class="btn-toolbar mt-8 col-md-12">
         <div>
-            <a href="/tablepayroll/create" class="btn btn-sm btn-primary m-2">
+            <a href="/payrollImport" class="btn btn-sm btn-primary m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Add payroll By Input
+                Import payroll By CSV
             </a>
         </div>
 
@@ -92,8 +92,8 @@
                         <td>{{$payroll->jabatan}}</td>
                         <td>{{$payroll->gajipokok}}</td>
                         <td>{{$payroll->gajiharian}}</td>
-                        <td> <a href="/tablepayroll/{{$payroll->nik}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
-                            <form action="/tablepayroll/{{$payroll->nik}}" method="POST">
+                        <td> <a href="/tablepayroll/{{$payroll->id}}/edit"><button type="submit" class="btn btn-warning">Update</button></a>
+                            <form action="/tablepayroll/{{$payroll->id}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button type="submit" class="btn btn-danger">DELETE</button>

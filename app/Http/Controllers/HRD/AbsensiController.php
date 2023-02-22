@@ -184,9 +184,28 @@ class AbsensiController extends Controller
 
     public function test()
     {
+        $bulan = Carbon::now()->month;
+
+        $data = KehadiranModel::all()->where('bulan', $bulan);
+
+        $tanggal = Carbon::now()->toDateString();
+
+        foreach ($data as $payroll) {
+            $data2 = JabatanModel::all()->where('jabatan', $payroll->namajabatan);
+            dd($data2);
+            DB::table('payrollkaryawan')
+                ->insert([
+                    'nama' => $payroll->namapegawai, 'nik' => $payroll->nik, 'jabatan' => $payroll->namajabatan, 'tanggal' => $tanggal, 'gajipokok' =>
+                    $data2->gajipokok, 'gajiharian' => $data2->gajiharian * ($data->hadir + $data->dinasluar)
+                ]);
+        }
+
+
+
+
+
         $test = Carbon::now()->toDateString();
         $libur = DB::table('liburan')->select('holiday_date')->where('jabatan', 'null')->where('holiday_date', $test)->value('$test');
-        dd($libur);
         $data = KaryawanModel::all();
         $tanggal = Carbon::now()->toDateTimeString();
         $tanggal2 = Carbon::now()->toDateTimeString();

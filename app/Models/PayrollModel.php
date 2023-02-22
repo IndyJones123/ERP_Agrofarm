@@ -13,6 +13,7 @@ class PayrollModel extends Model
         'nama',
         'nik',
         'jabatan',
+        'tanggal',
         'gajipokok',
         'gajiharian',
     ];
