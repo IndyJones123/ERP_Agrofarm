@@ -22,7 +22,7 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Form Tambah Jabatan</h5>
+                <h5 class="card-title">Form Tambah Karyawan</h5>
 
                 <!-- Vertical Form -->
                 <form class="row g-3" action="/tablekaryawan/create/store" method="post">

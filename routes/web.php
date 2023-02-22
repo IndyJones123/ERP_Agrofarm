@@ -5,6 +5,7 @@ use App\Http\Controllers\HRD\KaryawanController;
 use App\Http\Controllers\HRD\AbsensiController;
 use App\Http\Controllers\HRD\KehadiranLogController;
 use App\Http\Controllers\HRD\KehadiranController;
+use App\Http\Controllers\HRD\PayrollController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HRD\LiburController;
 use App\Http\Controllers\Karyawan\HomeKaryawanController;
@@ -93,7 +94,14 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::put('/tableTerlambat/{id}', [TerlambatController::class, 'update']);
     Route::get('/pdfterlambat/{id}', [TerlambatController::class, 'pdfterlambat']);
 
-    //
+
+    //Payroll Karyawan
+    Route::get('/payroll', [PayrollController::class, 'index']);
+    Route::get('/tablepayroll/create', [PayrollController::class, 'create_payroll']);
+    Route::post('/tablepayroll/create/store', [PayrollController::class, 'store']);
+    Route::get('/tablepayroll/{id}/edit', [PayrollController::class, 'edit']);
+    Route::put('/tablepayroll/{id}', [PayrollController::class, 'update']);
+    Route::delete('/tablepayroll/{id}', [PayrollController::class, 'delete']);
 });
 
 //HRD

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('photo', 300)->default('null');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('role')->default('0');
+            $table->integer('role')->default('2');
             $table->integer('issatpam')->default('0');
             $table->timestamps();
         });
