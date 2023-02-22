@@ -71,7 +71,7 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::put('/tableKehadiran/{id}', [KehadiranController::class, 'update']);
     Route::delete('/tableKehadiran/{id}', [KehadiranController::class, 'delete']);
     //Export KehadiranData
-    Route::get('/export', [KehadiranController::class, 'export']);
+    Route::get('/exportkehadiran', [KehadiranController::class, 'export']);
 
     //LogKehadiran
     Route::get('/tableLogKehadiran', [KehadiranLogController::class, 'index']);

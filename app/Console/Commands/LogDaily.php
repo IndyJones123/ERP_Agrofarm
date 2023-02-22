@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\KaryawanModel;
+use App\Models\LiburModel;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -32,12 +33,21 @@ class LogDaily extends Command
     {
         $data = KaryawanModel::all();
         $tanggal = Carbon::now()->toDateTimeString();
+        $test = Carbon::now()->toDateString();
         $tanggal = date('Y-m-d', time());
         $waktu = Carbon::now()->toTimeString();
+        $weekend = Carbon::now()->isWeekend();
         foreach ($data as $karyawan) {
-            DB::table('logkehadiran')
-                ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
-                $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+            $libur = DB::table('liburan')->select('holiday_date')->where('jabatan', $karyawan->jabatan)->where('holiday_date', $test)->value('$test');
+            if ($weekend == true || $tanggal == $libur) {
+                DB::table('logkehadiran')
+                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'Libur', 'keterangan' => 'null']);
+            } else {
+                DB::table('logkehadiran')
+                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+            }
         }
     }
 }

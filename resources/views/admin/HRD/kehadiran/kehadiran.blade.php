@@ -25,15 +25,11 @@
     <!-- Left side columns -->
     <div class="btn-toolbar mt-8 col-md-12">
         <div>
-            <a href="" class="btn btn-sm btn-primary m-2">
-                <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Add Data Kehadiran New Karyawan
-            </a>
-            <a href="/export" class="btn btn-sm btn-warning m-2">
+            <a href="/exportkehadiran" class="btn btn-sm btn-primary m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
                 Export CSV / PDF
             </a>
-            <a href="/import" class="btn btn-sm btn-warning m-2">
+            <a href="/importkehadiran" class="btn btn-sm btn-primary m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
                 Import CSV / PDF
             </a>

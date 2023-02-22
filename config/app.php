@@ -192,6 +192,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\converthariServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -218,6 +219,7 @@ return [
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'ConvertsHari' => App\Helpers\ConvertsHari::class,
     ])->toArray(),
 
 ];

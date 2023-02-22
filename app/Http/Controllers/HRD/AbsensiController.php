@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\HRD;
 
 use App\Http\Controllers\Controller;
+use App\Models\LiburModel;
 use App\Models\AbsensiModel;
 use App\Models\JabatanModel;
 use App\Models\KaryawanModel;
@@ -183,22 +184,26 @@ class AbsensiController extends Controller
 
     public function test()
     {
-        $data = KehadiranModel::all();
-        $bulanbaru = Carbon::now()->month();
-        $tahunbaru = Carbon::now()->year();
-        foreach ($data as $kehadiran) {
-            $sakit = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'sakit')->count();
-            $izin = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'izin')->count();
-            $alpha = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'alpha')->count();
-            $cuti = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'cuti')->count();
-            $dinasluar = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'dinasluar')->count();
-            $terlambat = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'terlambat')->count();
-            $hadir = DB::table('logkehadiran')->whereYear('tanggal', Carbon::today()->year)->whereMonth('tanggal', Carbon::today()->month)->where('namakaryawan', $kehadiran->namapegawai)->where('status', 'hadir-2')->count();
-            DB::table('kehadiran')->where('tahun', $tahunbaru)->where('bulan', $bulanbaru)->where('namapegawai', $kehadiran->namapegawai)
-                ->update([
-                    'sakit' => $sakit, 'izin' => $sakit, 'alpha' => $sakit, 'cuti' => $sakit,
-                    'dinasluar' => $sakit, 'terlambat' => $sakit, 'hadir' => $sakit
-                ]);
+        $test = Carbon::now()->toDateString();
+        $libur = DB::table('liburan')->select('holiday_date')->where('jabatan', 'null')->where('holiday_date', $test)->value('$test');
+        dd($libur);
+        $data = KaryawanModel::all();
+        $tanggal = Carbon::now()->toDateTimeString();
+        $tanggal2 = Carbon::now()->toDateTimeString();
+        $tanggal = date('Y-m-d', time());
+        $waktu = Carbon::now()->toTimeString();
+        $weekend = Carbon::now()->isWeekend();
+        foreach ($data as $karyawan) {
+
+            if ($weekend == true || $tanggal == $libur) {
+                DB::table('logkehadiran')
+                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'Libur', 'keterangan' => 'null']);
+            } else {
+                DB::table('logkehadiran')
+                    ->insert(['namakaryawan' => $karyawan->nama, 'jabatan' => $karyawan->jabatan, 'tanggal' =>
+                    $tanggal, 'absenmasuk' => $waktu, 'absenkeluar' => $waktu, 'status' => 'BelumAbsen', 'keterangan' => 'null']);
+            }
         }
     }
 }

@@ -137,6 +137,6 @@ class KehadiranController extends Controller
 
     public function export()
     {
-        return Excel::download(new KehadiranModel, 'pegawai.xlsx');
+        return Excel::download(new DataKehadiran(), 'pegawai.xlsx');
     }
 }
