@@ -102,6 +102,10 @@ Route::middleware('auth', 'isAdmin')->group(function () {
     Route::get('/tablepayroll/{id}/edit', [PayrollController::class, 'edit']);
     Route::put('/tablepayroll/{id}', [PayrollController::class, 'update']);
     Route::delete('/tablepayroll/{id}', [PayrollController::class, 'delete']);
+    //Export Payroll
+    Route::get('/payrollExport', [PayrollController::class, 'export']);
+    //Import Karyawan
+    Route::post('/payrollExport', [PayrollController::class, 'import']);
 });
 
 //HRD

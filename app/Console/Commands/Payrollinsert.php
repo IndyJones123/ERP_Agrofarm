@@ -39,11 +39,12 @@ class Payrollinsert extends Command
         $tanggal = Carbon::now()->toDateString();
 
         foreach ($data as $payroll) {
-            $data2 = JabatanModel::all()->where('namajabatan', $payroll->jabatan);
+            $gajipokok = DB::table('jabatan')->select('gajipokok')->where('namajabatan', $payroll->jabatan)->value('$test');
+            $gajiharian = DB::table('jabatan')->select('gajiharian')->where('namajabatan', $payroll->jabatan)->value('$test');
             DB::table('payrollkaryawan')
                 ->insert([
                     'nama' => $payroll->namapegawai, 'nik' => $payroll->nik, 'jabatan' => $payroll->jabatan, 'tanggal' => $tanggal, 'gajipokok' =>
-                    $data2->gajipokok, 'gajiharian' => $data2->gajiharian * ($payroll->hadir + $payroll->dinasluar)
+                    $gajipokok, 'gajiharian' => $gajiharian * ($payroll->hadir + $payroll->dinasluar)
                 ]);
         }
     }

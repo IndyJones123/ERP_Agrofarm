@@ -25,7 +25,7 @@
                 <h5 class="card-title">Form Edit Payroll</h5>
 
                 <!-- Vertical Form -->
-                <form class="row g-3" action="/tablekaryawan/{{$id}}" method="post">
+                <form class="row g-3" action="/tablepayroll/{{$id}}" method="post">
                     @method('put')
                     {{ csrf_field() }}
                     <div class="col-12">

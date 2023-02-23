@@ -25,7 +25,7 @@
         <form method="POST" action="/payrollImport" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file" value="">
-            <button class="btn btn-sm btn-warning m-2">Add payroll By Input</button>
+            <button class="btn btn-sm btn-warning m-2">Import payroll By CSV</button>
         </form>
     </div>
     <!-- Left side columns -->
@@ -33,7 +33,7 @@
         <div>
             <a href="/payrollImport" class="btn btn-sm btn-primary m-2">
                 <span data-feather="plus-circle" class="align-text-bottom me-1"></span>
-                Import payroll By CSV
+                Add payroll By Input
             </a>
         </div>
 

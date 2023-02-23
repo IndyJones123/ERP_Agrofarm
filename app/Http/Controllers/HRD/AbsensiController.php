@@ -191,12 +191,12 @@ class AbsensiController extends Controller
         $tanggal = Carbon::now()->toDateString();
 
         foreach ($data as $payroll) {
-            $data2 = JabatanModel::all()->where('jabatan', $payroll->namajabatan);
-            dd($data2);
+            $gajipokok = DB::table('jabatan')->select('gajipokok')->where('namajabatan', $payroll->jabatan)->value('$test');
+            $gajiharian = DB::table('jabatan')->select('gajiharian')->where('namajabatan', $payroll->jabatan)->value('$test');
             DB::table('payrollkaryawan')
                 ->insert([
-                    'nama' => $payroll->namapegawai, 'nik' => $payroll->nik, 'jabatan' => $payroll->namajabatan, 'tanggal' => $tanggal, 'gajipokok' =>
-                    $data2->gajipokok, 'gajiharian' => $data2->gajiharian * ($data->hadir + $data->dinasluar)
+                    'nama' => $payroll->namapegawai, 'nik' => $payroll->nik, 'jabatan' => $payroll->jabatan, 'tanggal' => $tanggal, 'gajipokok' =>
+                    $gajipokok, 'gajiharian' => $gajiharian * ($payroll->hadir + $payroll->dinasluar)
                 ]);
         }
 

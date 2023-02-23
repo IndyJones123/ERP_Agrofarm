@@ -19,12 +19,13 @@ class Kernel extends ConsoleKernel
         // $schedule->command('minute:update')->dailyAt('23:00')->timezone('Asia/Jakarta');
         // $schedule->command('kehadiran:insert')->monthly()->timezone('Asia/Jakarta');
         // $schedule->command('kehadiran:update')->everyFourHours()->timezone('Asia/Jakarta');
+        // $schedule->command('payroll:insert')->lastDayOfMonth('00:00')->timezone('Asia/Jakarta');
 
-        $schedule->command('minute:insert')->dailyAt('23:24')->timezone('Asia/Jakarta');
+        $schedule->command('minute:insert')->dailyAt('09:51')->timezone('Asia/Jakarta');
         $schedule->command('minute:update')->dailyAt('23:25')->timezone('Asia/Jakarta');
         $schedule->command('kehadiran:insert')->dailyAt('23:24')->timezone('Asia/Jakarta');
         $schedule->command('kehadiran:update')->dailyAt('23:25')->timezone('Asia/Jakarta');
-        $schedule->command('payroll:insert')->dailyAt('00:04')->timezone('Asia/Jakarta');
+        $schedule->command('payroll:insert')->dailyAt('09:12')->timezone('Asia/Jakarta');
     }
 
     /**
